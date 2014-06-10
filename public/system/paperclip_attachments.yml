@@ -1,0 +1,18 @@
+---
+:Service:
+  :logo:
+  - :medium
+  - :thumb
+  :header:
+  - :medium
+  - :thumb
+:Client:
+  :avatar:
+  - :large
+  - :medium
+  - :thumb
+:Sponsor:
+  :avatar:
+  - :large
+  - :medium
+  - :thumb
