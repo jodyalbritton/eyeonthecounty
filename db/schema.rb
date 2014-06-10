@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603181633) do
+ActiveRecord::Schema.define(version: 20140610175100) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -229,6 +229,27 @@ ActiveRecord::Schema.define(version: 20140603181633) do
 
   add_index "settings", ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true, using: :btree
 
+<<<<<<< HEAD
+=======
+  create_table "sites", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "subdomain"
+  end
+
+  create_table "sponsors", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "category_id"
+    t.boolean  "enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sponsors", ["category_id"], name: "index_sponsors_on_category_id", using: :btree
+
+>>>>>>> upstream/master
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
