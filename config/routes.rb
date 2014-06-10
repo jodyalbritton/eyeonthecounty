@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'sponsors/index'
+
 #Users and Roles 
   devise_for :users
   concern :the_role, TheRole::AdminRoutes.new
