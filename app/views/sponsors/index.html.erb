@@ -32,15 +32,17 @@
 					<% @sponsors.each do |sponsor| %>
 						<%= raw ("<li class='isotope-item col-sm-6 col-md-3 #{sponsor.category.name}'>") %><!-- item -->
 							<div class="item-box">
+								<p><%= sponsor.name %></p>
 								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/scouter-600x403.jpg">
+									<%= link_to sponsor_url(sponsor), :class=> "item-hover"  do%>
+									
 										<span class="overlay color2"></span>
 										<span class="inner">
 											<span class="block fa fa-plus fsize20"></span>
 											<strong>VIEW</strong> Sponsor
 										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/scouter-600x403.jpg" width="260" height="260" alt="">
+									<% end %>
+									<%= image_tag sponsor.avatar.url(:large), :class=>"img-responsive", size: "260x260" %>					
 								</figure>
 							</div>
 						</li>
