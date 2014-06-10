@@ -19,6 +19,9 @@
 
 				<ul class="nav nav-pills isotope-filter isotope-filter" data-sort-id="isotope-list" data-option-key="filter">
 					<li data-option-value="*" class="active"><a href="#">Show All</a></li>
+					<% @sponsors.each do |sponsor| %>
+						<% raw ("<li data-option-value='.#{sponsor.category.name}'><a href='#'>#{sponsor.category.name}</a></li>") %>
+					<% end %>
 					<li data-option-value=".development"><a href="#">Food</a></li>
 					<li data-option-value=".photography"><a href="#">Shops</a></li>
 					<li data-option-value=".design"><a href="#">Events</a></li>
