@@ -19,12 +19,9 @@
 
 				<ul class="nav nav-pills isotope-filter isotope-filter" data-sort-id="isotope-list" data-option-key="filter">
 					<li data-option-value="*" class="active"><a href="#">Show All</a></li>
-					<% @sponsors.each do |sponsor| %>
-						<% raw ("<li data-option-value='.#{sponsor.category.name}'><a href='#'>#{sponsor.category.name}</a></li>") %>
+					<% @categories.each do |category| %>
+						<%= raw ("<li data-option-value='.#{category.name}'><a href='#'>#{category.name}</a></li>") %>
 					<% end %>
-					<li data-option-value=".development"><a href="#">Food</a></li>
-					<li data-option-value=".photography"><a href="#">Shops</a></li>
-					<li data-option-value=".design"><a href="#">Events</a></li>
 				</ul>
 
 
@@ -32,7 +29,8 @@
 
 					<ul class="sort-destination isotope lightbox" data-sort-id="isotope-list" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
 
-						<li class="isotope-item col-sm-6 col-md-3 development"><!-- item -->
+					<% @sponsors.each do |sponsor| %>
+						<%= raw ("<li class='isotope-item col-sm-6 col-md-3 #{sponsor.category.name}'>") %><!-- item -->
 							<div class="item-box">
 								<figure>
 									<a class="item-hover" href="/assets/demo/portfolio/scouter-600x403.jpg">
@@ -46,171 +44,8 @@
 								</figure>
 							</div>
 						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 photography"><!-- item 2 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/black-kitty-600x403.jpg">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/black-kitty-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 design"><!-- item 3 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/merchant2-600x403.jpg">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/merchant2-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 photography"><!-- item 4 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/flippin-the-bird1-600x403.jpg">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/flippin-the-bird1-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 development"><!-- item 5 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/night_to_remember1-600x403.jpg">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/night_to_remember1-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 design"><!-- item 6 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/spacebound-600x403.jpg">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/spacebound-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 photography design"><!-- item 7 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/be-my-guest1-600x403.jpg">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/be-my-guest1-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 development"><!-- item 8 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/black-box5-600x403.jpg">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/black-box5-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 development"><!-- item -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/weather-app-600x403">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/weather-app-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 photography"><!-- item 2 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/theMoose-600x403.jpg">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/theMoose-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 design"><!-- item 3 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/tumblr_mopqj9QUeq1st5lhmo1_12801-600x403.jpg">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/tumblr_mopqj9QUeq1st5lhmo1_12801-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-3 photography"><!-- item 4 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="/assets/demo/portfolio/scouter-600x403.jpg">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									</a>
-									<img class="img-responsive" src="/assets/demo/portfolio/scouter-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-							</div>
-						</li>
+					  <% end %>
+						
 
 					</ul>
 
