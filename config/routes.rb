@@ -2,61 +2,113 @@ Rails.application.routes.draw do
 
 
 
-#Users and Roles 
-  devise_for :users
-  concern :the_role, TheRole::AdminRoutes.new
  
+#Users and Roles 
+    devise_for :users, :controllers => { :registrations => "registrations" }
+  
  
 #Site Features
   resources :sponsors, only: [:index, :show]
   resources :services, only: [:index, :show]
   resources :messages, only: [:new, :create]
+  resources :products, only: [:index, :show]
+  resources :contacts, only: [:new, :create, :thanks]
   
 
 #Admin interface 
+
   resources :admin, only: [:index]
+
   namespace :admin do
-      resources :posts
+      namespace :settings do
+       match  'edit_all' => :edit_all, :via => :get
+       match  'update_all' => :update_all, :via => :put
+      end
+      resources :company
+      resources :timesheets
+      resources :users do
+        resources :timesheets
+        resources :interactions
+      end
+      resources :posts do
+        collection do
+          get :tags
+        end
+      end
+      resources :products do 
+        resources :attachments
+        collection { post :sort }
+      end
       resources :categories
+      resources :interaction_events
       resources :rate_types
+      resources :severity_types
+      resources :ticket_statuses
+      resources :invoice_statuses
       resources :clients do 
-        resources :invoices
+        resources :invoices do 
+          resources :payments
+        end
         resources :tasks
+        resources :tickets 
+        resources :users 
+
+        resources :contacts
+
       end
       resources :messages
-      resources :contacts
-      resources :settings
-      resources :services
-      resources :invoices
-      resources :tickets
+      resources :interactions
+
+      resources :contacts do
+        resources :interactions
+      end
+     
+      resources :services do 
+          resources :attachments
+         end
+      resources :settings do 
+        
+      end
+      resources :invoices do
+          resources :payments
+          get :print
+      end
+
+      resources :payments
+      resources :tickets do
+        resources :attachments
+        resources :interactions
+      end
       resources :notes
-      resources :tasks
-      resources :sponsors
-      concerns :the_role
+      resources :tasks do 
+        collection { post :sort }
+      end
+      resources :sponsors do 
+        resources :attachments
+      end
+
 
   end
 
   #Blog Feature 
    scope '/blog' do
-      resources :posts, only: [:index, :show, :tagged, :catagorized]
-  end
+      resources :posts, only: [:show, :tagged, :catagorized]
+   end
     
   
   get 'blog', to: 'posts#index', :as => 'index'
   get 'blog/posts/tagged/:tag' => 'posts#tagged', :as => 'tagged'
   get 'blog/posts/categories/:category' => 'posts#categorized', :as => 'categorized'
+  get '/blog', to: 'posts#index'
+ 
 
-  
-  # Static Pages
-  get 'welcome/index'
-  get 'welcome/about'
-  get 'welcome/contact'
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+  
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

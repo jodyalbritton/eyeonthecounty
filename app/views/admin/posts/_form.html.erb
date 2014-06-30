@@ -16,45 +16,113 @@
     </div>
   <% end %>
 
+  <div class= "row">
+    <div class="col-md-8">
+      <div class="form-group">
+        <%= f.label :title, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :title, :class => "form-control", :required => true %>
+        </div> 
+      </div>
+      <div class="form-group">
+    <%= f.label :excerpt, :class => "col-sm-2 control-label" %>
+
+    <div class="col-sm-10">
+    <%= f.text_area :excerpt, :class => "form-control " %>
+
+    </div>
+  </div>
+      <div class="form-group">
+        <%= f.label :body, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_area :body, :class => "form-control" %>
+        </div>
+      </div>
 
   <div class="form-group">
-    <%= f.label :title, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-4">
-      <%= f.text_field :title, :class => "form-control" %>
+    <%= f.label :meta_keywords, :class => "col-md-2 control-label" %>
+
+    <div class="col-md-10">
+    <%= f.text_field :meta_keywords, :class => "form-control " %>
+
     </div>
-  </div>
-   <div class="form-group">
-    <%= f.label :draft, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-1">
-      <%= f.check_box :draft, :class => "form-control" %>
-    </div>
-  </div>
-    <div class="form-group">
-    <%= f.label :published_at, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-4 input-group date" id="bs-datepicker-component">
-          <%= f.text_field :published_at, :class => "form-control" %>   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-   </div>
   </div>
   <div class="form-group">
-    <%= f.label :body, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_area :body, :class => "form-control" %>
+    <%= f.label :meta_description, :class => "col-md-2 control-label" %>
+
+    <div class="col-md-10">
+    <%= f.text_field :meta_description, :class => "form-control " %>
+
     </div>
   </div>
-  
-   <div class="form-group">
-    <%= f.label :tag_list, :class => "col-sm-2 control-label" %>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+      <%= f.label :draft, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-1">
+            <%= f.check_box :draft, :class => "form-control toggle-button" %>
+      </div>
+      </div>
+      <div class="form-group">
+    <%= f.label :tags, :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :tag_list, :class => "form-control" %>
+      <%= f.text_field :tag_list, :class => "form-control", "data-pre" => @post.tags.map(&:attributes).to_json %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :category, :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.collection_select :category_id, Category.all, :id, :name %>
+      <%= f.text_field :category_name, data: {autocomplete_source: admin_categories_path}, :class=> "form-control", :required => true %>
     </div>
   </div>
-   <script>
+  <div class="form-group">
+    <%= f.label  "Published" , :class => "col-sm-2 control-label" %>
+    <div class="col-md-10">
+      <div class="input-group date" id="bs-datepicker-component">
+            <%= f.text_field :published_at, :class => "form-control", :value => Date.today.strftime("%Y-%m-%d") %>  
+             <span class="input-group-addon"><i class="fa fa-calendar"></i>
+            </span>
+     </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :photo, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.file_field :photo, :class=>"form-control" %>
+    </div>
+  </div>
+    </div>
+  </div>
+  
+  </div>
+  
+    
+  
+  
+   
+   
+
+
+ 
+
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+ 
+<% end %>
+
+
+  <script>
+      $(function(){
+          $('#post_body').editable({inlineMode: false, height: 600})
+      });
+  </script>
+
+
+<script>
           init.push(function () {
             var options = {
               todayBtn: "linked",
@@ -72,67 +140,36 @@
 
             $('#bs-datepicker-inline').datepicker();
           });
-        </script>
+
+          
+</script>
 
 
- 
-  <div class="form-group">
-    <%= f.label :excerpt, :class => "col-sm-2 control-label" %>
 
-    <div class="col-sm-10">
-    <%= f.text_area :excerpt, :class => "form-control " %>
+  <script>
+      $(function() {
+        $( "#post_category_name" ).autocomplete({
+          source: $('#post_category_name').data('autocomplete-source')
+    });
+  });
 
-    </div>
-  
+  $(function() {
+  $("#post_tag_list").tokenInput("/admin/posts/tags.json", {
+    prePopulate:       $("#post_tag_list").data("pre"),
+    preventDuplicates: true,
+    noResultsText:     "No results, press enter to create.",
+    theme: "facebook",
+    tokenValue:"name",
+    allowFreeTagging: true
+  });
+});
+  </script>
 
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit :class => "btn btn-primary" %>
-    </div>
-  </div>
- 
-<% end %>
 
+  <script>
+          init.push(function () {
+            $('.toggle-button').switcher();
 
-   <!-- 5. $SUMMERNOTE_WYSIWYG_EDITOR =================================================================
-
-    Summernote WYSIWYG-editor
--->
-    <!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js)-->
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.min.css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/blackboard.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.min.css">
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.min.js"></script>
-
-    <!-- Javascript -->
-    <script>
-      init.push(function () {
-        if (! $('html').hasClass('ie8')) {
-          $('#post_body').summernote({
-            height: 500,
-            tabsize: 2,
-            codemirror: {
-              theme: 'monokai'
-            }
+            
           });
-        }
-        $('#summernote-boxed').switcher({
-          on_state_content: '<span class="fa fa-check" style="font-size:11px;"></span>',
-          off_state_content: '<span class="fa fa-times" style="font-size:11px;"></span>'
-        });
-        $('#summernote-boxed').on($('html').hasClass('ie8') ? "propertychange" : "change", function () {
-          var $panel = $(this).parents('.panel');
-          if ($(this).is(':checked')) {
-            $panel.find('.panel-body').addClass('no-padding');
-            $panel.find('.panel-body > *').addClass('no-border');
-          } else {
-            $panel.find('.panel-body').removeClass('no-padding');
-            $panel.find('.panel-body > *').removeClass('no-border');
-          }
-        });
-      });
-    </script>
-<!-- /5. $SUMMERNOTE_WYSIWYG_EDITOR --> 
+</script>

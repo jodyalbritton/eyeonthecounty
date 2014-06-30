@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, @invoice], :html => { :class => "form-horizontal", :multipart => true }) do |f| %>
+<%= form_for([:admin, @invoice], :html => { :class => "form-horizontal", :multipart => true }) do |f| %>
   <% if @invoice.errors.any? %>
     <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -15,13 +15,19 @@
   <div class="form-group">
     <%= f.label :subject, :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.input :subject, :class => "form-control" %>
+      <%= f.text_field :subject, :class => "form-control", :label => false %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :client, :class => "col-sm-2 control-label" %>
+      <%= f.label :Client, :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.association :client, :class => "form-control" %>
+      <%= f.text_field :client_name, data: {autocomplete_source: admin_clients_path}, :class=> "form-control", :required => true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :State, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+     <%= f.collection_select :invoice_status_id, InvoiceStatus.all, :id, :state, :class=>"form-control" %>   
     </div>
   </div>
   <div>
@@ -32,13 +38,10 @@
             <li>
               <a href="#invoice-tabs-notes" data-toggle="tab">Notes</a>
             </li>
-            <li>
-              <a href="#invoice-tabs-details" data-toggle="tab">Details</a>
-            </li>
-
+        
     </ul>
     <div class="tab-content tab-content-bordered panel-padding">
-            <div class="tab-pane panel no-padding no-border fade in active" id="invoice-tabs-items">
+            <div class="tab-pane no-padding no-border fade in active" id="invoice-tabs-items">
                
                   <%= f.simple_fields_for :items, :wrapper => 'bootstrap' do |item| %>
                       
@@ -47,26 +50,27 @@
                     <% end %>
             
               
-                  <div class="links">
+                  <div class="form-group links">
                   <%= link_to_add_association 'add item', f, :items, :class=>"btn btn-primary pull-right" %>
                   </div>
         
             </div>
     
           
-              <div class="tab-pane panel no-padding no-border fade in" id="invoice-tabs-notes">
+              <div class="tab-pane no-padding no-border fade in" id="invoice-tabs-notes">
                 
                   <%= f.simple_fields_for :notes, :wrapper => 'bootstrap' do |item| %>
                             
                              <%= render 'note_fields', :f => item %>
                   <% end %>
                     
-                  <div class="links">
+                  <div class="form-group links">
                   <%= link_to_add_association 'add note', f, :notes, :class=>"btn btn-primary pull-right" %>
                   </div>
              
            
             </div>
+            
     </div>
 
 
@@ -78,3 +82,11 @@
   </div>
 
 <% end %>
+
+<script>
+ $(function() {
+        $( "#invoice_client_name" ).autocomplete({
+          source: $('#invoice_client_name').data('autocomplete-source')
+    });
+  });
+</script>

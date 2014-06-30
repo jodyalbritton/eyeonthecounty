@@ -1,20 +1,22 @@
   <% content_for :page_header do %>
     Dashboard
   <% end %>
-  <% content_for :page_actions do %>
-
-  <% end %>
-
+ 
 <%= render 'admin/header' %>
 
 
 
+<div class="row">
 
 <%= render 'admin/tasks' %>
 
 
 
 <%= render 'admin/tickets' %>
+</div>
+
+  <%= render 'admin/unpaid_invoices' %>
+
 
 
   <script>

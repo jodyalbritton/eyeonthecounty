@@ -1,14 +1,16 @@
 class Message < ActiveRecord::Base
-  attr_accessor :full_name, :phone
+  attr_accessor :full_name, :phone, :recipient, :to_address
 
   belongs_to :client
   belongs_to :project
   belongs_to :conversation
   has_many :message_receipts
-
+  has_many :attachments, as: :attachable 
 
   before_create :get_sender
-  after_create :create_receipts 
+  after_create :create_receipts, :create_interaction
+
+  validates_presence_of :email, :subject, :full_name
 
    
 
@@ -23,14 +25,20 @@ class Message < ActiveRecord::Base
        	Contact.find_or_create_by(:email => email) do |contact|
      		 contact.full_name = full_name
         end
-      else 
-        User.find_by(:email=> email)
+      else
+        
+        Contact.find_or_create_by(:email => email) do |contact|
+         curr_user = User.find_by_email(email)
+         contact.full_name = curr_user.full_name
+         contact.first_name = curr_user.first_name
+         contact.last_name = curr_user.last_name
+       end
       end
   end
    
    
    def get_receiver
-      User.find(1)
+      User.find_by_email(recipient)
    end 
 
    
@@ -41,6 +49,14 @@ class Message < ActiveRecord::Base
    def create_receipts 
    		create_receipt_for_recipients 
    		create_receipt_for_sender
+   end 
+   def create_interaction
+     Interaction.create(
+      event: "Sent a message",
+      content: self.body, 
+      interactive_id: get_sender.id, 
+      interactive_type: get_sender.class  
+    )
    end 
  
    def create_receipt_for_recipients

@@ -1,17 +1,27 @@
 class Admin::ContactsController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_actions_for ApplicationAuthorizer
+  add_breadcrumb "Admin", :admin_index_path
+  add_breadcrumb "Contacts", :admin_contacts_path
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   layout "layouts/admin"
-  before_action :login_required
-  before_action :role_required
+
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    if params[:client_id]
+      @client = Client.find(params[:client_id])
+      @contacts = @client.contacts.all
+    else
+      @contacts = Contact.all
+    end
   end
 
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    @new_interaction = @contact.interactions.new
+    @interactions = @contact.interactions.order('created_at DESC')
   end
 
   # GET /contacts/new
@@ -71,7 +81,7 @@ class Admin::ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:full_name, :first_name, :last_name, :email, :phone, :description, :url, :avatar, :client_id)
+      params.require(:contact).permit(:full_name, :first_name, :last_name, :email, :phone, :notes, :url, :avatar, :client_id, :avatar)
     end
 
 end

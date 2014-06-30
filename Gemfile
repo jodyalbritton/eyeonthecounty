@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
@@ -16,6 +16,7 @@ gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jquery-turbolinks'
@@ -28,26 +29,39 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 #gems for user accounts and objects
 gem 'devise'
-gem 'the_role', '~> 2.5.2'
+gem "rolify"
+gem 'authority'
+gem "figaro"
 gem 'acts-as-taggable-on',  '~> 3.2.5'
-gem 'the_role_bootstrap3_ui'
 gem "paperclip", "~> 4.1"
 gem 'friendly_id', '~> 5.0.0'
 gem "breadcrumbs_on_rails"
 gem 'kaminari'
+
 gem "rails-settings-cached", "0.4.1"
+gem 'rails-settings-ui'
 gem 'simple_form'
 gem "cocoon"
 gem 'faker'
+gem 'canonical-rails', github: 'jumph4x/canonical-rails'
+gem 'modernizr-rails'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
 gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-
+gem 'high_voltage', github: 'thoughtbot/high_voltage'
+gem 'acts_as_list'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+
+#mailing 
+
+
+group :development do
+  gem 'meta_request'
+end
 # Use unicorn as the app server
 # gem 'unicorn'
 

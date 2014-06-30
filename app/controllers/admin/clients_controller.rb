@@ -1,12 +1,21 @@
 class Admin::ClientsController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_actions_for ApplicationAuthorizer
+  add_breadcrumb "Admin", :admin_index_path
+  add_breadcrumb "Clients", :admin_clients_path
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   layout "layouts/admin"
-  before_action :login_required
-  before_action :role_required
+
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    if params[:term]
+      @clients = Client.order(:name).where("name like ?", "%#{params[:term]}%")
+      render json: @clients.map(&:name)
+    else
+      @clients = Client.all
+    end
+
 
   end
 
@@ -73,6 +82,6 @@ class Admin::ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:name, :email, :phone, :description, :url, :avatar)
+      params.require(:client).permit(:name, :email, :phone, :description, :url, :avatar, :address, :city, :state, :zip, :featured)
     end
 end

@@ -1,13 +1,15 @@
 class AdminController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_actions_for ApplicationAuthorizer
 	layout "layouts/admin"
-	before_action :login_required
-	before_action :role_required
 	add_breadcrumb "Admin", :admin_index_path
+
   	
  def index
-  	@tasks = Task.where(:completed => false).order('created_at DESC')
+    @tasks = Task.where(:completed => false).order(:position)
     @tickets = Ticket.all
   	@new_task = Task.new
+    @unpaid_invoices = Invoice.where(:paid => false || nil)
 
   end
 

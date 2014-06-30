@@ -1,0 +1,107 @@
+<% content_for :page_header do %>
+   <%= @invoice.subject %>
+  <% end %>
+  <% content_for :page_actions do %>
+    <%= link_to admin_invoices_path, :class => 'btn btn-primary btn-labeled', :style=>"width: 100%;" do %>
+                <span class="btn-label icon fa fa-plus"></span>Back
+    <% end %>
+  <% end %>
+
+<script>
+  var init = [];
+  init.push(function () {
+    $('body').addClass('page-invoice');
+  });
+</script>
+<div class="panel invoice" id="printDiv">
+<div class="panel-heading hidden-print">
+            <span class="panel-title">Customer Invoice</span>
+            <div class="panel-heading-controls">
+              <span class="panel-heading-text"><em><%= link_to "Back", admin_invoice_path(@invoice) %></em>&nbsp;&nbsp;<span style="color: #ccc">|</span>&nbsp;&nbsp;</span>
+               <%= link_to edit_admin_invoice_path(@invoice), :class => 'btn btn-xs' do %>
+                <span class="btn-label icon fa fa-plus"></span>Edit
+               <% end %>
+            </div>
+</div> <!-- / .panel-heading -->
+      <div class="invoice-header">
+        <h3>
+        
+          <div>
+                <small><%= Setting.company_name %></small><br>
+            Invoice #<%= @invoice.id %>
+          </div>
+        </h3>
+        <address>
+          <%= Setting.company_address %><br>
+          <%= Setting.company_city %>, <%= Setting.company_state %>, <%= Setting.company_zip %><br>
+         
+        </address>
+        <div class="invoice-date pull-right">
+          <small><strong>Date</strong></small><br>
+         <%= @invoice.created_at.strftime('%B %d, %Y') %>
+        </div>
+      </div> <!-- / .invoice-header -->
+      <div class="invoice-info">
+        <div class="invoice-recipient">
+          <strong><%= @invoice.client.name %></strong><br>
+           <%= @invoice.client.address %><br>
+           <%= @invoice.client.city %>, <%=@invoice.client.state %>, <%= @invoice.client.zip %>
+        </div> <!-- / .invoice-recipient -->
+        <div class="invoice-total">
+          <span><%= @invoice.total_price %> </span>
+          TOTAL:
+        </div> <!-- / .invoice-total -->
+        <div class="invoice-due">
+          <span><%= @invoice.current_balance %> </span>
+          DUE:
+        </div> <!-- / .invoice-total -->
+      </div> <!-- / .invoice-info -->
+      <hr>
+      <div class="invoice-table">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Item Name
+              </th>
+              <th>
+                Billed
+              </th>
+              <th>
+                Item Type
+              </th>
+              <th>
+                Quantity
+              </th>
+              <th>
+                Line total
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @invoice.items.each do |item| %>
+            <tr>
+              <td>
+               <%= item.purchasable.name %>
+                <div class="invoice-description"><%= item.description %></div>
+              </td>
+              <td>
+                <%= item.purchasable.rate_type.name %>
+              </td>
+              <td>
+                <%= item.purchasable.class.to_s %>
+              </td>
+              <td>
+                <%= item.quantity %>
+              </td>
+              <td>
+                <%= item.line_total %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+       
+      </div> <!-- / .invoice-table -->
+    </div> <!-- / .invoice -->
+<!-- /5. $INVOICE_PAGE -->

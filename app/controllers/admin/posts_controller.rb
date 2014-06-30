@@ -1,7 +1,8 @@
 class Admin::PostsController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_actions_for ApplicationAuthorizer
   layout "layouts/admin"
-  before_action :login_required
-  before_action :role_required
+
   add_breadcrumb "Admin", :admin_index_path
   add_breadcrumb "Posts", :admin_posts_path
 
@@ -74,6 +75,12 @@ class Admin::PostsController < ApplicationController
     end
   end
 
+  def tags 
+  @tags = ActsAsTaggableOn::Tag.where("tags.name LIKE ?", "%#{params[:q]}%") 
+  respond_to do |format|
+   format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name }}}
+  end 
+  end
 
 
 
@@ -92,6 +99,6 @@ class Admin::PostsController < ApplicationController
     
 
     def post_params
-      params.require(:post).permit(:title, :body, :published_at, :author_id, :draft, :excerpt, :author, :tag_list, :category_id)
+      params.require(:post).permit(:title, :body, :published_at, :author_id, :draft, :excerpt, :author, :tag_list, :category, :photo, :category_name, :meta_keywords, :meta_descritpion)
     end
 end

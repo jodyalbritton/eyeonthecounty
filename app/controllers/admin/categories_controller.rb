@@ -1,14 +1,21 @@
 class Admin::CategoriesController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_actions_for ApplicationAuthorizer
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   add_breadcrumb "Admin", :admin_index_path
   add_breadcrumb "Categories", :admin_categories_path
   layout "layouts/admin"
-  before_action :login_required
-  before_action :role_required
+
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    if params[:term]
+      @categories = Category.order(:name).where("name like ?", "%#{params[:term]}%")
+      render json: @categories.map(&:name)
+    else 
+      @categories = Category.all
+    end
+   
   end
 
   # GET /categories/1

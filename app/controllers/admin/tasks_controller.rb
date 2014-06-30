@@ -1,7 +1,10 @@
 class Admin::TasksController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_actions_for ApplicationAuthorizer
+  add_breadcrumb "Admin", :admin_index_path
+  add_breadcrumb "Tasks", :admin_tasks_path
   layout "layouts/admin"
-  before_action :login_required
-  before_action :role_required
+
   def new  
      respond_to do |format|
         format.js
@@ -9,7 +12,7 @@ class Admin::TasksController < ApplicationController
   end
 
   def index
-  	@tasks = Task.where(:completed => false).order('created_at DESC')
+  	@tasks = Task.where(:completed => false).order('position ASC')
   	@new_task = Task.new
 
   end
@@ -43,13 +46,22 @@ class Admin::TasksController < ApplicationController
   end
 end
 
+def sort
+ params[:task].each_with_index do |id, index|
+        task = Task.find(id)
+        task.position = index
+        task.save
+    end
+    render nothing: true
+end
+
  private
     # Use callbacks to share common setup or constraints between actions.
   
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:completed, :item, :client)
+      params.require(:task).permit(:completed, :item, :client, :position)
     end
 
 end

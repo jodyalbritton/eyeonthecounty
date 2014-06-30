@@ -1,6 +1,6 @@
 class Admin::MessagesController < ApplicationController
-  before_action :login_required
-  before_action :role_required
+  before_filter :authenticate_user!
+  authorize_actions_for ApplicationAuthorizer
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   add_breadcrumb "Admin", :admin_index_path
   add_breadcrumb "Messages", :admin_categories_path
@@ -29,12 +29,8 @@ class Admin::MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    unless current_user == nil
-      @user = current_user 
-      @message = @user.messages.new
-    else
+    
       @message = Message.new
-  end
   end
 
   # GET /messages/1/edit

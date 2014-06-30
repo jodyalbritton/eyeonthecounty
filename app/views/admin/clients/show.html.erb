@@ -6,21 +6,7 @@
    <%= @client.name %>
   <% end %>
   <% content_for :page_search do %>
-    <div class="mail-controls clearfix">
-      <div class="btn-toolbar wide-btns pull-left" role="toolbar">
-
-        <div class="btn-group">
-          <button type="button" class="btn"><i class="fa fa-repeat"></i></button>
-        </div>
-
-        <div class="btn-group">
-          <button type="button" class="btn"><i class="fa fa fa-file-text-o"></i></button>
-          <button type="button" class="btn"><i class="fa fa-exclamation-circle"></i></button>
-          <button type="button" class="btn"><i class="fa fa-trash-o"></i></button>
-        </div>
-
-      </div>
-    </div>
+   
   <% end %>
   <% content_for :page_actions do %>
     <%= link_to admin_clients_path, :class => 'btn btn-primary btn-labeled', :style=>"width: 100%;" do %>
@@ -30,23 +16,30 @@
   <%= render 'admin/header' %>
 
 
-  <ul id="uidemo-tabs-default-demo" class="nav nav-tabs">
-              <li class="active">
+  <ul id="uidemo-tabs-default-demo" class="nav nav-tabs tabdrop">
+              <li class="">
                 <a href="#client-dash" data-toggle="tab">Dashboard</a>
               </li>
               <li class="">
                 <a href="#client-invoices" data-toggle="tab">Invoices <span class="badge badge-primary"><%= @client.invoices.size %></span></a>
               </li>
                <li class="">
+                <a href="#client-tickets" data-toggle="tab">Tickets<span class="badge badge-primary"><%= @client.tickets.size %></span></a>
+              </li>
+               <li class="">
                 <a href="#client-contacts" data-toggle="tab">Contacts <span class="badge badge-primary"><%= @client.contacts.size %></span></a>
               </li>
+              <li class="">
+                <a href="#client-users" data-toggle="tab">Users <span class="badge badge-primary"><%= @client.users.size %></span></a>
+              </li>
+             
   </ul>
 
   <div class="tab-content tab-content-bordered">
               <div class="tab-pane fade active in" id="client-dash">
-                <div class="holder">
+                <div class="holder row">
                 <%= render 'admin/clients/partials/tasks' %>
-                <%= render 'admin/clients/partials/tickets' %>
+                <%= render 'admin/clients/partials/summary' %>
                 </div>
                            
               </div> <!-- / .tab-pane -->
@@ -60,13 +53,23 @@
                 <%= render 'admin/clients/partials/contacts' %>
                </div>
               </div><!-- / .tab-pane -->
+              <div class="tab-pane fade" id="client-users">
+               <div class="holder">
+                <%= render 'admin/clients/partials/users' %>
+               </div>
+              </div><!-- / .tab-pane -->
+              <div class="tab-pane fade" id="client-tickets">
+               <div class="holder">
+                <%= render 'admin/clients/partials/tickets' %>
+               </div>
+              </div><!-- / .tab-pane -->
     
 </div>
 
  <!-- Javascript -->
       <script>
         init.push(function () {
-          $('#dashboard-support-tickets .panel-body > div').slimScroll({ height: 300, alwaysVisible: true, color: '#888',allowPageScroll: true });
+          $('#dashboard-support-tickets .panel-body').slimScroll({ height: 300, alwaysVisible: true, color: '#888',allowPageScroll: true });
         })
       </script>
 
@@ -83,3 +86,10 @@
   </script>
       <!-- / Javascript -->
 
+<script>
+
+          init.push(function () {
+            $('ul.tabdrop').tabdrop();
+          });
+
+</script>

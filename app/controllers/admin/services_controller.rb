@@ -1,8 +1,11 @@
 class Admin::ServicesController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_actions_for ApplicationAuthorizer
+  add_breadcrumb "Admin", :admin_index_path
+  add_breadcrumb "Services", :admin_services_path
   before_action :set_service, only: [:show, :edit, :update, :destroy]
   layout "layouts/admin"
-  before_action :login_required
-  before_action :role_required
+
   # GET /services
   # GET /services.json
   def index
@@ -30,7 +33,7 @@ class Admin::ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
+        format.html { redirect_to admin_service_path(@service), notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else
         format.html { render :new }
@@ -66,11 +69,11 @@ class Admin::ServicesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service
-      @service = Service.find(params[:id])
+      @service = Service.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :description, :summary, :category_id, :logo, :header, :logo_icon, :cost, :price, :rate_type_id)
+      params.require(:service).permit(:name, :description, :summary, :category_name, :listed, :logo, :header, :logo_icon, :cost, :price, :rate_type_id, :position, :featured)
     end
 end

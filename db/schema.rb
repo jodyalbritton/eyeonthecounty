@@ -11,14 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610221105) do
+ActiveRecord::Schema.define(version: 20140629215154) do
 
+<<<<<<< HEAD
+=======
+  create_table "attachments", force: true do |t|
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.string   "title"
+    t.string   "alt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+>>>>>>> upstream/master
   create_table "categories", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.integer  "position"
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
@@ -35,8 +52,22 @@ ActiveRecord::Schema.define(version: 20140610221105) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "featured",            default: false
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.boolean  "active",              default: true
+    t.integer  "assigned_to_id"
+    t.integer  "client_owner_id"
   end
 
+<<<<<<< HEAD
+=======
+  add_index "clients", ["assigned_to_id"], name: "index_clients_on_assigned_to_id", using: :btree
+  add_index "clients", ["client_owner_id"], name: "index_clients_on_client_owner_id", using: :btree
+
+>>>>>>> upstream/master
   create_table "contacts", force: true do |t|
     t.string   "full_name"
     t.string   "first_name"
@@ -51,6 +82,10 @@ ActiveRecord::Schema.define(version: 20140610221105) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "contacts", ["client_id"], name: "index_contacts_on_client_id", using: :btree
@@ -75,25 +110,65 @@ ActiveRecord::Schema.define(version: 20140610221105) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "interaction_events", force: true do |t|
+    t.string   "name"
+    t.integer  "interaction_id"
+    t.text     "description"
+    t.boolean  "billable",       default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "interactions", force: true do |t|
+    t.integer  "interactive_id"
+    t.string   "interactive_type"
+    t.string   "event"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "content"
+    t.integer  "time",                 default: 0
+    t.integer  "interaction_event_id"
+  end
+
+  add_index "interactions", ["interaction_event_id"], name: "index_interactions_on_interaction_event_id", using: :btree
+
+  create_table "invoice__statuses", force: true do |t|
+    t.string   "state"
+    t.text     "description"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoice_statuses", force: true do |t|
+    t.string   "state"
+    t.text     "description"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "invoices", force: true do |t|
     t.string   "subject"
     t.integer  "client_id"
     t.date     "started_on"
     t.date     "completed_on"
-    t.decimal  "total",        precision: 10, scale: 0
+    t.decimal  "total",             precision: 8, scale: 2
     t.text     "notes"
     t.string   "attention"
     t.integer  "inv_number"
-    t.decimal  "balance",      precision: 10, scale: 0
+    t.decimal  "balance",           precision: 8, scale: 2
     t.boolean  "paid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "invoice_status_id"
   end
 
   add_index "invoices", ["client_id"], name: "index_invoices_on_client_id", using: :btree
+  add_index "invoices", ["invoice_status_id"], name: "index_invoices_on_invoice_status_id", using: :btree
 
   create_table "items", force: true do |t|
-    t.decimal  "cost",             precision: 10, scale: 0
+    t.decimal  "cost",             precision: 8, scale: 2
     t.string   "name"
     t.text     "description"
     t.integer  "item_num"
@@ -103,6 +178,7 @@ ActiveRecord::Schema.define(version: 20140610221105) do
     t.string   "purchasable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "price",            precision: 8, scale: 2
   end
 
   create_table "message_receipts", force: true do |t|
@@ -160,6 +236,21 @@ ActiveRecord::Schema.define(version: 20140610221105) do
 
   add_index "notes", ["created_by_id"], name: "index_notes_on_created_by_id", using: :btree
 
+  create_table "payments", force: true do |t|
+    t.decimal  "amount",            precision: 8, scale: 2, default: 0.0, null: false
+    t.integer  "invoice_id"
+    t.integer  "source_id"
+    t.string   "source_type"
+    t.integer  "payment_method_id"
+    t.string   "state"
+    t.string   "response_code"
+    t.string   "avs_response"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payments", ["invoice_id"], name: "index_payments_on_invoice_id", using: :btree
+
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -171,27 +262,69 @@ ActiveRecord::Schema.define(version: 20140610221105) do
     t.datetime "updated_at"
     t.integer  "category_id"
     t.string   "slug"
+<<<<<<< HEAD
+=======
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+>>>>>>> upstream/master
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
 
+  create_table "products", force: true do |t|
+    t.string   "name",                                              default: "",    null: false
+    t.text     "description"
+    t.integer  "stock",                                             default: 0
+    t.boolean  "available",                                         default: false
+    t.datetime "available_on"
+    t.string   "slug"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.string   "sku",                                               default: "",    null: false
+    t.decimal  "cost",                      precision: 8, scale: 2, default: 0.0
+    t.decimal  "price",                     precision: 8, scale: 2, default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "category_id"
+    t.integer  "position"
+    t.string   "header_photo_file_name"
+    t.string   "header_photo_content_type"
+    t.integer  "header_photo_file_size"
+    t.datetime "header_photo_updated_at"
+    t.boolean  "featured",                                          default: true
+    t.text     "summary"
+  end
+
+  add_index "products", ["slug"], name: "index_products_on_slug", unique: true, using: :btree
+
   create_table "rate_types", force: true do |t|
     t.string   "name"
     t.integer  "unit"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "roles", force: true do |t|
-    t.string   "name",        null: false
-    t.string   "title",       null: false
-    t.text     "description", null: false
-    t.text     "the_role",    null: false
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "services", force: true do |t|
     t.string   "name"
@@ -213,10 +346,16 @@ ActiveRecord::Schema.define(version: 20140610221105) do
     t.decimal  "cost",                precision: 30, scale: 10
     t.decimal  "duration",            precision: 30, scale: 10
     t.integer  "rate_type_id"
+    t.boolean  "featured",                                      default: false
+    t.integer  "sort_value",                                    default: 0
+    t.string   "slug"
+    t.integer  "position"
+    t.boolean  "listed",                                        default: false
   end
 
   add_index "services", ["category_id"], name: "index_services_on_category_id", using: :btree
   add_index "services", ["rate_type_id"], name: "index_services_on_rate_type_id", using: :btree
+  add_index "services", ["slug"], name: "index_services_on_slug", unique: true, using: :btree
 
   create_table "settings", force: true do |t|
     t.string   "var",                   null: false
@@ -225,10 +364,22 @@ ActiveRecord::Schema.define(version: 20140610221105) do
     t.string   "thing_type", limit: 30
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   add_index "settings", ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true, using: :btree
 
+<<<<<<< HEAD
+=======
+  create_table "severity_types", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+>>>>>>> upstream/master
   create_table "sponsors", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -249,10 +400,12 @@ ActiveRecord::Schema.define(version: 20140610221105) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
+    t.string   "slug"
   end
 
   add_index "sponsors", ["category_id"], name: "index_sponsors_on_category_id", using: :btree
   add_index "sponsors", ["client_id"], name: "index_sponsors_on_client_id", using: :btree
+  add_index "sponsors", ["slug"], name: "index_sponsors_on_slug", unique: true, using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -282,10 +435,19 @@ ActiveRecord::Schema.define(version: 20140610221105) do
     t.boolean  "completed",    default: false
     t.integer  "client_id"
     t.integer  "user_id"
+    t.integer  "position"
   end
 
   add_index "tasks", ["client_id"], name: "index_tasks_on_client_id", using: :btree
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
+
+  create_table "ticket_statuses", force: true do |t|
+    t.string   "state"
+    t.text     "description"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tickets", force: true do |t|
     t.string   "subject"
@@ -296,24 +458,42 @@ ActiveRecord::Schema.define(version: 20140610221105) do
     t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "resolution"
+    t.integer  "assignable_id"
+    t.string   "assignable_type"
+    t.integer  "severity_type_id"
+    t.integer  "ticket_status_id"
   end
 
   add_index "tickets", ["client_id"], name: "index_tickets_on_client_id", using: :btree
+  add_index "tickets", ["severity_type_id"], name: "index_tickets_on_severity_type_id", using: :btree
+  add_index "tickets", ["ticket_status_id"], name: "index_tickets_on_ticket_status_id", using: :btree
+
+  create_table "timesheets", force: true do |t|
+    t.datetime "clocked_in"
+    t.datetime "clocked_out"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "source"
+  end
+
+  add_index "timesheets", ["user_id"], name: "index_timesheets_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "first_name",             default: "", null: false
-    t.string   "last_name",              default: "", null: false
-    t.string   "telephone",              default: "", null: false
-    t.string   "address",                default: "", null: false
-    t.string   "city",                   default: "", null: false
-    t.string   "state",                  default: "", null: false
-    t.string   "zip",                    default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "first_name",             default: "",    null: false
+    t.string   "last_name",              default: "",    null: false
+    t.string   "telephone",              default: "",    null: false
+    t.string   "address",                default: "",    null: false
+    t.string   "city",                   default: "",    null: false
+    t.string   "state",                  default: "",    null: false
+    t.string   "zip",                    default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -324,10 +504,36 @@ ActiveRecord::Schema.define(version: 20140610221105) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role_id"
+    t.string   "username"
+    t.integer  "client_id"
+    t.boolean  "can_assign"
+    t.string   "title"
+    t.boolean  "active"
+    t.string   "company"
+    t.string   "country"
+    t.string   "manager"
+    t.string   "mobile_phone"
+    t.boolean  "self_created"
+    t.boolean  "clocked_in",             default: false
+    t.boolean  "employee",               default: false
+    t.string   "slug"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
+  add_index "users", ["client_id"], name: "index_users_on_client_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+
+  create_table "users_roles", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
 end

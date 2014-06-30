@@ -1,16 +1,16 @@
 class Admin::RateTypesController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_actions_for ApplicationAuthorizer
   layout "layouts/admin"
-  before_action :login_required
-  before_action :role_required
   add_breadcrumb "Admin", :admin_index_path
-  add_breadcrumb "Posts", :admin_rate_types_path
+  add_breadcrumb "Rate Types", :admin_rate_types_path
 
   before_action :set_rate_type, only: [:show, :edit, :update, :destroy]
 
   # GET /rate_types
   # GET /rate_types.json
   def index
-    @rate_types = RateType.all
+    @rate_types = RateType.order('position ASC')
   end
 
   # GET /rate_types/1

@@ -1,8 +1,10 @@
 class Admin::InvoicesController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_actions_for ApplicationAuthorizer
+  add_breadcrumb "Admin", :admin_index_path
+  add_breadcrumb "Invoices", :admin_invoices_path
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
-  layout "layouts/admin"
-  before_action :login_required
-  before_action :role_required
+  layout :resolve_layout
   # GET /invoices
   # GET /invoices.json
   def index
@@ -83,8 +85,24 @@ class Admin::InvoicesController < ApplicationController
     end
   end
 
+  def print
+  
+  @invoice = Invoice.find(params[:invoice_id])
+  end
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
+    def resolve_layout
+    case action_name
+    when "print"
+      "layouts/print"
+    else
+      "layouts/admin"
+    end
+  end
     def set_invoice
       if params[:client_id]
       @client = Client.find(params[:client_id])
@@ -98,6 +116,6 @@ class Admin::InvoicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
-      params.require(:invoice).permit(:subject, :client_id, :started_on, :completed_on, :total, :notes, :attention, :inv_number, :balance, :paid,  items_attributes: [:id, :subject, :target_identifier, :purchasable_type, :purchasable_id, :quantity, :_destroy] )
+      params.require(:invoice).permit(:subject, :client_name, :started_on, :completed_on, :total, :notes, :attention, :inv_number, :balance, :paid,  items_attributes: [:id, :subject, :cost, :price, :description, :target_identifier, :purchasable_type, :purchasable_id, :quantity, :_destroy], notes_attributes: [:id, :body] )
     end
 end
