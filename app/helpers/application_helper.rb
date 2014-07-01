@@ -9,7 +9,7 @@ module ApplicationHelper
   	end
 
   	def featured_videos
-  		Video.all
+  		Video.order(:published_at).first(4)
   	end
 
     def site_categories 
@@ -21,6 +21,7 @@ module ApplicationHelper
     end 
 
     def featured_tags
+      Post.tag_counts_on(:tags) + Video.tag_counts_on(:tags)
     end
 
 end
