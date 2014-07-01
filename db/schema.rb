@@ -13,8 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140701014817) do
 
-<<<<<<< HEAD
-=======
   create_table "attachments", force: true do |t|
     t.integer  "attachable_id"
     t.string   "attachable_type"
@@ -28,7 +26,6 @@ ActiveRecord::Schema.define(version: 20140701014817) do
     t.datetime "file_updated_at"
   end
 
->>>>>>> upstream/master
   create_table "categories", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -62,12 +59,9 @@ ActiveRecord::Schema.define(version: 20140701014817) do
     t.integer  "client_owner_id"
   end
 
-<<<<<<< HEAD
-=======
   add_index "clients", ["assigned_to_id"], name: "index_clients_on_assigned_to_id", using: :btree
   add_index "clients", ["client_owner_id"], name: "index_clients_on_client_owner_id", using: :btree
 
->>>>>>> upstream/master
   create_table "contacts", force: true do |t|
     t.string   "full_name"
     t.string   "first_name"
@@ -131,14 +125,6 @@ ActiveRecord::Schema.define(version: 20140701014817) do
   end
 
   add_index "interactions", ["interaction_event_id"], name: "index_interactions_on_interaction_event_id", using: :btree
-
-  create_table "invoice__statuses", force: true do |t|
-    t.string   "state"
-    t.text     "description"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "invoice_statuses", force: true do |t|
     t.string   "state"
@@ -262,15 +248,12 @@ ActiveRecord::Schema.define(version: 20140701014817) do
     t.datetime "updated_at"
     t.integer  "category_id"
     t.string   "slug"
-<<<<<<< HEAD
-=======
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "meta_description"
     t.string   "meta_keywords"
->>>>>>> upstream/master
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
@@ -369,8 +352,6 @@ ActiveRecord::Schema.define(version: 20140701014817) do
 
   add_index "settings", ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true, using: :btree
 
-<<<<<<< HEAD
-=======
   create_table "severity_types", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -379,7 +360,6 @@ ActiveRecord::Schema.define(version: 20140701014817) do
     t.datetime "updated_at"
   end
 
->>>>>>> upstream/master
   create_table "sponsors", force: true do |t|
     t.string   "name"
     t.text     "description"
