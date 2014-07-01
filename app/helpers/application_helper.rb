@@ -12,4 +12,15 @@ module ApplicationHelper
   		Video.all
   	end
 
+    def site_categories 
+      Category.all
+    end
+
+    def featured_sponsors
+      Sponsor.all
+    end 
+
+    def featured_tags
+    end
+
 end
