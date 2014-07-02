@@ -16,4 +16,6 @@
 //= require functions
 //= require responsiveCarousel
 //= require slimbox2
+//= require jquery.bind_with_delay
+//= require yt_player.coffee
 //= require_self

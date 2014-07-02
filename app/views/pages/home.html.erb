@@ -10,7 +10,7 @@
                             <!-- Video Thumbnail Start --> 
                             <%= link_to video_url(video) do %> 
                                  <%= image_tag "https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg", alt: video.title,
-                              class: 'yt_preview img-rounded img-responsive hovereffect', :"data-uid" => video.uid %>
+                              class: 'img-rounded img-responsive hovereffect' %>
                                 
                             <% end %>
                             <!-- Video Thumbnail End -->
@@ -88,8 +88,8 @@
                                 </div>
                                 <% featured_videos.first(4).each do |video| %>
                                 <div class='tab_item'>
-                                    <h5><%= video.title %></h5>
-                                    <span class="hidden-xs">JANUARY 10, 2014</span>
+                                    <h5><%= video.title.first(20) %></h5>
+                                    <span class="hidden-xs"><%= video.created_at.strftime("%m/%d/%Y") %></span>
                                 </div>
                                 <% end %>
                             </div>
@@ -103,7 +103,7 @@
                                                 <!-- Video Thumbnail Start --> 
                                                 <a href="video-detail-double-sidebar.html">
                                                     <%= image_tag "https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg", alt: video.title,
-                                                 class: 'yt_preview img-rounded img-responsive hovereffect', :"data-uid" => video.uid %>
+                                                 class: 'img-rounded img-responsive hovereffect' %>
                                                 </a>
                                                 <!-- Video Thumbnail End -->
                                                 <a href="#" class="playicon"><i class="fa fa-play-circle-o"></i></a>

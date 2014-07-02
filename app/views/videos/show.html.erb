@@ -16,7 +16,7 @@
                             <figure> <a href="video-list.html"><img src="assets/avatar2.jpg" alt=""></a> </figure>
                             <div class="aboutuploader">
                                 <h5><a href="video-list.html">By <%= @video.author %></a></h5>
-                                <time datetime="25-12-2014">Uploaded : <%= @video.created_at %></time>
+                                <time datetime="25-12-2014">Uploaded : <%= @video.published_at %></time>
                                 <br>
                                 <a class="btn btn-primary btn-xs backcolor" href="#">Watch All Videos</a> </div>
                         </div>
@@ -31,7 +31,7 @@
                                 </li>
                                 <li class="views">
                                     <h5>Views</h5>
-                                    <h2>70K</h2>
+                                    <h2><%= @video.views %></h2>
                                 </li>
                             </ul>
                         </div>

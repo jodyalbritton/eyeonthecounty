@@ -29,6 +29,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 #gems for user accounts and objects
 gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-gplus'
+gem "omniauth-google-oauth2"
 gem "rolify"
 gem 'authority'
 gem "figaro"
@@ -52,6 +56,10 @@ gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-ra
 gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'high_voltage', github: 'thoughtbot/high_voltage'
 gem 'acts_as_list'
+
+
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
