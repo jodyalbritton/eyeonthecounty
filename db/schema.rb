@@ -543,8 +543,8 @@ ActiveRecord::Schema.define(version: 20140701112248) do
     t.string   "yt_tags"
     t.integer  "views"
     t.integer  "position"
-    t.datetime "published_at"
-    t.datetime "yt_updated_at"
+    t.time     "published_at"
+    t.time     "yt_updated_at"
     t.string   "slug"
   end
 
