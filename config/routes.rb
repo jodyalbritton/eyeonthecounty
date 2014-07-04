@@ -25,19 +25,22 @@ Rails.application.routes.draw do
        match  'edit_all' => :edit_all, :via => :get
        match  'update_all' => :update_all, :via => :put
       end
-      resources :company
+      resources :chat_messages, only: [:create]
+      resources :company 
       resources :timesheets
       resources :users do
         resources :timesheets
         resources :interactions
       end
       resources :posts do
+        post 'crop', :on => :member
         collection do
           get :tags
         end
       end
       resources :products do 
         resources :attachments
+        post 'crop', :on => :member
         collection { post :sort }
       end
       resources :categories
@@ -71,6 +74,7 @@ Rails.application.routes.draw do
      
       resources :services do 
           resources :attachments
+          post 'crop', :on => :member
          end
       resources :settings do 
         

@@ -12,6 +12,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.autocomplete
+//= require jquery.jcrop
+//= require papercrop
 //= require admin/bootstrap
 //= require admin/pixel-admin
 //= require admin/jquery.searchable
@@ -22,6 +24,7 @@
 //= require admin/jquery.bind_with_delay
 //= require admin/yt_player
 //= require cocoon
+//= require admin/chat
 //= require_self
 
 

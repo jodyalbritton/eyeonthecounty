@@ -53,7 +53,7 @@ class Admin::UsersController < ApplicationController
 
      respond_to do |format|
       if successfully_updated
-        format.html { redirect_to edit_admin_user_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_user_path(@user), notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -74,7 +74,7 @@ class Admin::UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_update_params
-      params.require(:user).permit(:email, :username, :first_name, :last_name, :title, :telephone, :mobile_phone,:address, :city, :state, :zip, :password, :password_confirmation, :client_id, :employee, :clocked_in)
+      params.require(:user).permit(:email, :username, :first_name, :last_name, :title, :telephone, :mobile_phone,:address, :city, :state, :zip, :password, :password_confirmation, :client_id, :employee, :clocked_in, :avatar)
     end
 
     def needs_password?(user, params)

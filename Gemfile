@@ -38,6 +38,7 @@ gem 'authority'
 gem "figaro"
 gem 'acts-as-taggable-on',  '~> 3.2.5'
 gem "paperclip", "~> 4.1"
+gem "papercrop"
 gem 'friendly_id', '~> 5.0.0'
 gem "breadcrumbs_on_rails"
 gem 'kaminari'
@@ -46,17 +47,18 @@ gem "rails-settings-cached", "0.4.1"
 gem 'rails-settings-ui'
 gem 'simple_form'
 gem "cocoon"
+gem 'aasm'
 gem 'faker'
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 gem 'modernizr-rails'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-
+gem 'thin', group: :development 
 gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'high_voltage', github: 'thoughtbot/high_voltage'
 gem 'acts_as_list'
-
+gem 'pusher'
 
 
 
