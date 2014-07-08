@@ -1,0 +1,107 @@
+			<!-- PAGE TITLE -->
+				<header id="page-title">
+					<div class="container">
+						<h1>Create <strong>Account</strong></h1>
+					</div>
+				</header>
+
+				<section class="container">
+
+					<div class="row">
+
+						<!-- REGISTER -->
+						<div class="col-md-6">
+
+							<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                       			 <%= devise_error_messages! %>
+								
+								<div class="row">
+									<div class="form-group">
+										<div class="col-md-12">
+											<label>Username</label>
+											  <%= f.text_field :username, autofocus: true, :class=> "form-control", :type=> "text", :required => true %>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<div class="col-md-12">
+											<label>Email</label>
+											  <%= f.email_field :email, :class=> "form-control", :type=> "text", :required => true %>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<div class="col-md-6">
+											<label>First Name</label>
+											  <%= f.text_field :first_name, autofocus: true, :class=> "form-control", :type=> "text" %>
+										</div>
+										<div class="col-md-6">
+											<label>Last Name</label>
+											  <%= f.text_field :last_name, autofocus: true, :class=> "form-control", :type=> "text" %>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<div class="col-md-6">
+											<label>Password</label>
+											 <%= f.password_field :password, autocomplete: "off", :type=> "password", :class=> "form-control" %>
+										</div>
+										<div class="col-md-6">
+											<label>Re-enter Password</label>
+											 <%= f.password_field :password, autocomplete: "off", :type=> "password", :class=> "form-control" %>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<input type="submit" value="Sign Up" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
+									</div>
+								</div>
+
+							<% end %>
+
+						</div>
+						<!-- /REGISTER -->
+
+						<!-- WHY? -->
+						<div class="col-md-6">
+
+						
+
+							<div class="white-row">
+
+								<h4>Registration is fast and easy</h4>
+
+								<p>Once you're registered, you can:</p>
+								<ul class="list-icon check">
+									<li>Vote on Videos</li>
+									<li>View the Archives</li>
+									<li>Comment</li>
+									<li>Participate in the EOTC Chat</li>
+								</ul>
+
+								<hr class="half-margins" />
+
+								<p>
+									Already have an account?
+
+									<%= link_to "Sign In", new_user_session_path %>
+								</p>
+							</div>
+
+							<div class="white-row">
+								<h4>Contact Customer Support</h4>
+								<p>
+									If you're looking for more help or have a question to ask, please <%= link_to "Contact Us", page_path('contact') %>
+								</p>
+							</div>
+
+						</div>
+						<!-- /WHY? -->
+
+					</div>
+
+				</section>
