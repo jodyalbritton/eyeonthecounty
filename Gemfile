@@ -35,6 +35,9 @@ gem 'omniauth-gplus'
 gem "omniauth-google-oauth2"
 gem "rolify"
 gem 'authority'
+gem 'money'
+gem 'money-rails'
+gem 'autonumeric-rails'
 gem "figaro"
 gem 'acts-as-taggable-on',  '~> 3.2.5'
 gem "paperclip", "~> 4.1"
@@ -59,7 +62,8 @@ gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-ra
 gem 'high_voltage', github: 'thoughtbot/high_voltage'
 gem 'acts_as_list'
 gem 'pusher'
-
+gem 'jquery-datatables-rails', '~> 2.1.10.0.2'
+gem 'lodash-rails'
 
 
 # Use ActiveModel has_secure_password
