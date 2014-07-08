@@ -51,30 +51,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <!-- Advertisement End -->
-                    <!-- Recent Post Widget start -->
-                    <div class="widget">
-                        <h2 class="heading">Recent Posts</h2>
-                        <ul class="recentposts">
-                            <li>
-                                <h5><a href="blogdetail-double-sidebar.html">Dolor. Proin. Sit rhoncus ut odio nascetur</a></h5>
-                                <p class="date">25 April 2013</p>
-                            </li>
-                            <li>
-                                <h5><a href="blogdetail-double-sidebar.html"> Urna nec, cursus, dictumst! Etiam</a></h5>
-                                <p class="date">01 May 2013</p>
-                            </li>
-                            <li>
-                                <h5><a href="blogdetail-double-sidebar.html">Lundium turpis platea? In vel auctor tincidunt</a></h5>
-                                <p class="date">25 April 2013</p>
-                            </li>
-                            <li>
-                                <h5><a href="blogdetail-double-sidebar.html">Pulvinar, elementum ac, lectus parturient.</a></h5>
-                                <p class="date">01 May 2013</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- Recent Post Widget end -->
+  
                 </div>
                 <!-- Gray Sidebar End -->
                 <!-- Content Column Start -->
@@ -304,18 +281,18 @@
                                         </a>
                                         <figcaption>
                                             <ul>
-                                                <li><i class="fa fa-calendar"></i>25-03-2014</li>
+                                                <li><i class="fa fa-calendar"></i><%= featured_posts.first.published_at %></li>
                                                 <li>
                                                     <i class="fa fa-align-justify"></i>
-                                                    <a href="#">News</a>
+                                                    <a href="#"><%= featured_posts.first.category.try(:name) %></a>
                                                 </li>
                                             </ul>
                                         </figcaption>
                                     </figure>
                                     <div class="text">
-                                        <h4 class="heading"><a href="blogdetail-double-sidebar.html">Divide days</a></h4>
+                                        <h4 class="heading"><a href="blogdetail-double-sidebar.html"><%= featured_posts.first.title %></a></h4>
                                         <p>
-                                            Tortor, proin, enim ac quis integer, in turpis cum platea nascetur nec nunc vut magna.
+                                            <%= featured_posts.first.excerpt %>
                                         </p>
                                         <a href="#" class="btn btn-primary btn-xs backcolor">Read More</a>
                                     </div>
@@ -324,45 +301,21 @@
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <ul class="bloglist">
+                                    <% featured_posts.last(3).each do |post| %>
                                     <li>
                                         <div class="media">
                                             <a href="blogdetail-double-sidebar.html" class="pull-left">
                                                 <img src="assets/img1.jpg" class="media-object img-responsive hovereffect" alt="" />
                                             </a>
                                             <div class="media-body">
-                                                <h4><a href="blogdetail-double-sidebar.html">Gathering Kind</a></h4>
+                                                <h4><%= link_to post.title, post_path(post) %></h4>
                                                 <ul>
-                                                    <li><i class="fa fa-calendar"></i>25-03-2014</li>
+                                                    <li><i class="fa fa-calendar"></i><%= post.published_at %></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="media">
-                                            <a href="blogdetail-double-sidebar.html" class="pull-left">
-                                                <img src="assets/img2.jpg" class="media-object img-responsive hovereffect" alt="" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4><a href="blogdetail-double-sidebar.html">Multiply Moves</a></h4>
-                                                <ul>
-                                                    <li><i class="fa fa-calendar"></i>25-03-2014</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="media">
-                                            <a href="blogdetail-double-sidebar.html" class="pull-left">
-                                                <img src="assets/img3.jpg" class="media-object img-responsive hovereffect" alt="" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4><a href="blogdetail-double-sidebar.html">Second Seed</a></h4>
-                                                <ul>
-                                                    <li><i class="fa fa-calendar"></i>25-03-2014</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    <% end %>
                                 </ul>
                             </div>
                         </div>
@@ -374,69 +327,22 @@
                     <div class="clearfix"></div>
                     <!-- Contents Section Started -->
                     <div class="sections">
-                        <h2 class="heading">Gallery</h2>
+                        <h2 class="heading">Newest Photos</h2>
                         <div class="clearfix"></div>
                         <div class="row">
+                            <% featured_galleries.each do |gal| %>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <figure class="gallery">
-                                    <a href="assets/img1-big.jpg" class="lightbox-gallery">
-                                        <img src="assets/img17.jpg" alt="" class="img-responsive hovereffect">
-                                    </a>
+                                    <%= link_to "#" do %>
+                                        <%= image_tag gal.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
+                                        
+                                    <% end %>
                                     <figcaption class="backcolor">
-                                        <h4><a href="#">Augue phasell penatibus</a></h4>
+                                        <h4><a href="#"><%= gal.name %></a></h4>
                                     </figcaption>
                                 </figure>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <figure class="gallery">
-                                    <a href="assets/img2-big.jpg" class="lightbox-gallery">
-                                        <img src="assets/img18.jpg" alt="" class="img-responsive hovereffect">
-                                    </a>
-                                    <figcaption class="backcolor">
-                                        <h4><a href="#">Sit rhoncus ut odio</a></h4>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <figure class="gallery">
-                                    <a href="assets/img1-big.jpg" class="lightbox-gallery">
-                                        <img src="assets/img19.jpg" alt="" class="img-responsive hovereffect">
-                                    </a>
-                                    <figcaption class="backcolor">
-                                        <h4><a href="#">Nascetur mus a placerat</a></h4>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <figure class="gallery">
-                                    <a href="assets/img1-big.jpg" class="lightbox-gallery">
-                                        <img src="assets/img20.jpg" alt="" class="img-responsive hovereffect">
-                                    </a>
-                                    <figcaption class="backcolor">
-                                        <h4><a href="#">Turpis diam ridiculus</a></h4>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <figure class="gallery">
-                                    <a href="assets/img1-big.jpg" class="lightbox-gallery">
-                                        <img src="assets/img21.jpg" alt="" class="img-responsive hovereffect">
-                                    </a>
-                                    <figcaption class="backcolor">
-                                        <h4><a href="#">Mid scelerisque integer</a></h4>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <figure class="gallery">
-                                    <a href="assets/img1-big.jpg" class="lightbox-gallery">
-                                        <img src="assets/img22.jpg" alt="" class="img-responsive hovereffect">
-                                    </a>
-                                    <figcaption class="backcolor">
-                                        <h4><a href="#">Montes, odio ut, facilisis </a></h4>
-                                    </figcaption>
-                                </figure>
-                            </div>
+                          <% end %>
                         </div>
                     </div>
                     <!-- Contents Section End -->

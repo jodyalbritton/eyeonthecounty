@@ -112,7 +112,10 @@
                     <!-- Logo Start -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="logo">
-                            <a href="index.html"><img src="/assets/logo.png" alt="Video Magazine"></a>
+                            <%= link_to root_url do %>
+                            <img src="/assets/logo.png" alt="Video Magazine">
+                            <% end %>
+                           
                         </div>
                     </div>
                     <!-- Logo End -->
@@ -165,18 +168,20 @@
                                            
                                             <!-- Contact Us Start -->
                                             <li class="dropdown yamm-fw">
-                                                <a href="contact-us.html" data-toggle="dropdown" class="dropdown-toggle">Contact Us</a>
+                                                <%= link_to "Contact Us", page_path('contact'), :class=> "dropdown-toggle",  data: {:toggle=>"dropdown"} %>
+                                                
                                                 <ul class="dropdown-menu">
                                                     <li>
                                                         <div class="yamm-content">
                                                             <div class="row">
                                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                    <a href="contact-us.html">
+                                                                    <%= link_to page_path('contact') do %>
                                                                     	<strong>
                                                                         	<i class="fa fa-envelope"></i>
                                                                             View contact us page or write your message here
                                                                         </strong>
-                                                                    </a>
+                                                                    <% end %>
+                                                                
                                                                 	<hr>
                                                                 </div>
                                                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -228,8 +233,14 @@
                     <!-- Login Start -->
                     <div class="col-lg-2 col-md-3 col-sm-6 col-xs-8">
                         <div class="loginsec pull-right">
-                            <a href="#" class="colorhover"><i class="fa fa-lock"></i>Login</a>
-                            <a href="#" class="colorhover"><i class="fa fa-sign-in"></i>Sign Up</a>
+                            <% if user_signed_in? %>
+                            <%= link_to edit_user_registration_path do %><i class="fa fa-pencil"></i>Edit Account<% end %>
+                            <%= link_to destroy_user_session_path, :method => :delete do %><i class="fa fa-sign-in"></i>Sign Out<% end %>
+                            <% else%> 
+                            <%= link_to new_user_session_path do %><i class="fa fa-lock"></i>Login<% end %>
+                            <%= link_to new_user_registration_path do %><i class="fa fa-sign-in"></i>Sign Up<% end %>
+                            <% end %>
+                           
                         </div>
                     </div>
                     <!-- Login End -->
@@ -245,110 +256,7 @@
 <footer class="style2">
         <div class="custom-container">
             <!-- Footer Videos Start -->
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6"> 
-                    <!-- Links Widget start -->
-                    <div class="widget">
-                        <h4 class="heading">Features</h4>
-                        <div class="links">
-                            <ul>
-                                <li><a href="#">Bootstrap</a></li>
-                                <li><a href="#">HTML5</a></li>
-                                <li><a href="#">CSS3</a></li>
-                                <li><a href="#">Responsive</a></li>
-                                <li><a href="#">Lot Lot More</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- Links Widget End -->
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6"> 
-                    <!-- Links Widget start -->
-                    <div class="widget">
-                        <h4 class="heading">Tools</h4>
-                        <div class="links">
-                            <ul>
-                                <li><a href="#">Sign In</a></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="blog-carousel-fullwidth.html">Blogs</a></li>
-                                <li><a href="#">News Alerts</a></li>
-                                <li><a href="gallery-carousel-fullwidth.html">Gallery</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- Links Widget End -->
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6"> 
-                    <!-- Links Widget start -->
-                    <div class="widget">
-                        <h4 class="heading">Website</h4>
-                        <div class="links">
-                            <ul>
-                                <li><a href="contact-us.html">Advertising</a></li>
-                                <li><a href="contact-us.html">Contact Us</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms of Use</a></li>
-                                <li><a href="#">Site Map</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- Links Widget End -->
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6"> 
-                    <!-- Links Widget start -->
-                    <div class="widget">
-                        <h4 class="heading">Popular Shows</h4>
-                        <div class="links">
-                            <ul>
-                                <li><a href="video-detail-double-sidebar.html">Gathered Green</a></li>
-                                <li><a href="video-detail-double-sidebar.html">Fourth Winged</a></li>
-                                <li><a href="video-detail-double-sidebar.html">Waters Years</a></li>
-                                <li><a href="video-detail-double-sidebar.html">Firmament Fly</a></li>
-                                <li><a href="video-detail-double-sidebar.html">First Sixth Be</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- Links Widget End -->
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6"> 
-                    <!-- Links Widget start -->
-                    <div class="widget">
-                        <h4 class="heading">Videos</h4>
-                        <div class="links">
-                            <ul>
-                                <li><a href="#">Sport</a></li>
-                                <li><a href="#">Tech</a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Arts</a></li>
-                                <li><a href="#">Gaming</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- Links Widget End -->
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6"> 
-                    <!-- Links Widget start -->
-                    <div class="widget">
-                        <h4 class="heading">Top Shortcodes</h4>
-                        <div class="links">
-                            <ul>
-                                <li><a href="shortcode-icons.html">Font Awsome</a></li>
-                                <li><a href="shortcode-tabs.html">Tabs Contents</a></li>
-                                <li><a href="shortcode-accordion.html">Accordion</a></li>
-                                <li><a href="shortcode-audios.html">Soundcloud</a></li>
-                                <li><a href="shortcode-images.html">Gallery</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- Links Widget End -->
-                </div>
-            </div>
+
             <!-- Footer Videos End -->
             <hr>
             <div class="row footerwidgets">
@@ -357,7 +265,7 @@
                     <div class="widget">
                         <div class="text-widget">
                             <div class="textsec">
-                                <a href="index.html"><img src="/assets/logo2.png" alt=""></a>
+                                <%= link_to root_url do %><img src="/assets/logo.png" alt=""><% end %>
                                 <br><br>
                                 <p>
                                     Ut volutpat consectetur aliquam. Curabitur auctor in nis ulum ornare. Sed consequat, augue condimentum fermentum gravida, metus elit vehicula dui.
@@ -376,21 +284,15 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 .col-xs-12">
                     <!-- Flickr Widget start -->
                     <div class="widget">
-                        <h2 class="heading">Flickr Photos</h2>
+                        <h2 class="heading">Recent Photos</h2>
                         <div class="flickrgallery">
-                            <ul>
-                                <li><a href="#"><img src="/assets/img13.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img14.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img15.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img16.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img17.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img18.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img19.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img20.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img21.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img22.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img23.jpg" alt="" class="img-responsive hovereffect"></a></li>
-                                <li><a href="#"><img src="/assets/img24.jpg" alt="" class="img-responsive hovereffect"></a></li>
+                            <ul>   
+                                <% featured_galleries.each do |gal| %>
+                                 <li><%= link_to "#" do %> 
+                                    <%= image_tag gal.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
+                                 <% end %>
+                                <% end %>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -428,7 +330,7 @@
             <hr>
             <div class="row">
                 <div class="col-lg-10 col-md-10 col-sm-9 .col-xs-9">
-                    <p class="copyrights">© 2014. All rights reserved. Designed by <a href="#"><strong>SoftCircles</strong></a></p>
+                    <p class="copyrights">© 2014 Eye On The County. All rights reserved. Designed by <a href="http://getoptimus.com"><strong>Optimus Labs</strong></a></p>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-3 .col-xs-3">
                     <div class="socialnetworks">

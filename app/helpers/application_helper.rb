@@ -11,6 +11,12 @@ module ApplicationHelper
   	def featured_videos
   		Video.order(:published_at).first(4)
   	end
+    def featured_galleries
+      Gallery.order(:created_at).first(6)
+    end
+    def featured_posts
+      Post.order(:published_at).first(4)
+    end
 
     def site_categories 
       Category.all

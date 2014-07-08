@@ -608,10 +608,6 @@ ActiveRecord::Schema.define(version: 20140708194158) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "name"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
   end
 
   add_index "users", ["client_id"], name: "index_users_on_client_id", using: :btree

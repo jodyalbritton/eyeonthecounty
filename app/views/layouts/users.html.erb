@@ -1,1 +1,367 @@
-<%= yield %>
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+		<title>Eye On The County</title>
+		<meta name="keywords" content="henderson, county, news" />
+		<meta name="description" content="" />
+		<meta name="Author" content="Jody Albritton" />
+
+		<!-- mobile settings -->
+		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+		<!-- WEB FONTS -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet" type="text/css" />
+
+		<!-- CORE CSS -->
+		  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+		 
+ 
+ 		 <%= csrf_meta_tags %>
+  		 <%= favicon_link_tag 'favicon.ico' %>
+
+	   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+       <script src="https://www.youtube.com/iframe_api"></script>
+
+		<!-- THEME CSS -->
+	
+	
+	
+		
+
+		
+		
+
+		<!-- Morenizr -->
+		 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	</head>
+	<body>
+<div class="wrapper">
+ 
+<header>
+        <!-- Header Top Strip Start -->
+        <div class="topstrip">
+            <div class="custom-container">
+                <div class="row">
+                    <!-- Top Categories Start -->
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
+                        <div class="topcategories">
+                            <!-- navbar Start -->
+                            <div class="navbar yamm navbar-default">
+                                <div class="navbar-header">
+                                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-2" class="navbar-toggle">
+                                        <i class="fa fa-bars"></i> Categories
+                                    </button>
+                                </div>
+                                <div id="navbar-collapse-2" class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav">
+                                        <% site_categories.each do |category| %>
+                                            <li><%= link_to category.name, "" %></li>
+                                        <% end %>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!-- Top Categories End -->
+                    <!-- Social Network Start -->
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <div class="socialnetworks">
+                            <ul class="pull-right">
+                                <li>
+                                    <a href="#" data-toggle="tooltip" title="" data-placement="bottom" class="facebook" data-original-title="Facebook">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="tooltip" title="" data-placement="bottom" class="youtube" data-original-title="Youtube">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="tooltip" title="" data-placement="bottom" class="twitter" data-original-title="Twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="tooltip" title="" data-placement="bottom" class="vimeo" data-original-title="Vimeo">
+                                        <i class="fa fa-vimeo-square"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="tooltip" title="" data-placement="bottom" class="pinterest" data-original-title="Pinterest">
+                                        <i class="fa fa-pinterest"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!-- Social Network End -->
+                </div>
+            </div>
+        </div>
+        <!-- Header Top Strip End -->
+        <!-- Logo + Search + Advertisment Start -->
+        <div class="logobar">
+            <div class="custom-container">
+                <div class="row">
+                    <!-- Logo Start -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="logo">
+                            <a href="index.html"><img src="/assets/logo.png" alt="Video Magazine"></a>
+                        </div>
+                    </div>
+                    <!-- Logo End -->
+                    <!-- Search Start -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="searchbox">
+                            <form>
+                                <ul>
+                                    <li><input type="text" placeholder="Search Videos"></li>
+                                    <li class="pull-right"><input type="submit" value="GO"></li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Search End -->
+                    <!-- Advertisment Start -->
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <figure class="header-adv">
+                            <a href="#"><img src="/assets/adv.gif" class="img-responsive" alt="Advertisment"></a>
+                        </figure>
+                    </div>
+                    <!-- Advertisment End -->
+                </div>
+            </div>
+        </div>
+        <!-- Logo + Search + Advertisment End -->
+        <!-- Navigation Strip Start -->
+        <div class="navigationstrip stickynav bordercolor-top">
+            <div class="custom-container">
+                <div class="row">
+                    <!-- Navigation Start -->
+                    <div class="col-lg-10 col-md-9 col-sm-6 col-xs-4">
+                        <div class="navigation">
+                            <!-- navbar Start -->
+                            <div class="navbar yamm navbar-default">
+                                <div class="row">
+                                    <div class="navbar-header">
+                                        <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle">
+                                            <i class="fa fa-bars"></i> Menu
+                                        </button>
+                                    </div>
+                                    <div id="navbar-collapse-1" class="navbar-collapse collapse">
+                                        <ul class="nav navbar-nav">
+                                            <li> <%= link_to "Home", root_url %></li>
+                                            <li> <%= link_to "Videos", videos_url %></li>
+                                           
+
+                                            
+                                           
+                                           
+                                            <!-- Contact Us Start -->
+                                            <li class="dropdown yamm-fw">
+                                                <a href="contact-us.html" data-toggle="dropdown" class="dropdown-toggle">Contact Us</a>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <div class="yamm-content">
+                                                            <div class="row">
+                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                    <a href="contact-us.html">
+                                                                    	<strong>
+                                                                        	<i class="fa fa-envelope"></i>
+                                                                            View contact us page or write your message here
+                                                                        </strong>
+                                                                    </a>
+                                                                	<hr>
+                                                                </div>
+                                                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                                                    <div class="contact-forms">
+                                                                        <form>
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-12 .col-xs-12">
+                                                                                    <input type="text" placeholder="Your Name">
+                                                                                </div>
+                                                                                <div class="col-lg-6 col-md-6 col-sm-12 .col-xs-12">
+                                                                                    <input type="text" placeholder="Email Address">
+                                                                                </div>
+                                                                                <div class="col-lg-12 col-md-12 col-sm-12 .col-xs-12">
+                                                                                    <input type="text" placeholder="Subject">
+                                                                                </div>
+                                                                                <div class="col-lg-12 col-md-12 col-sm-12 .col-xs-12">
+                                                                                    <textarea placeholder="Message"></textarea>
+                                                                                </div>
+                                                                                <div class="col-lg-12 col-md-12 col-sm-12 .col-xs-12">
+                                                                                    <button type="button" class="btn btn-primary backcolor">
+                                                                                        <span>Submit message</span>
+                                                                                        <i class="fa fa-angle-right"></i>
+                                                                                    </button>
+                                                                                    <p>Make sure you put a valid email.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden-xs">
+                                                                    <div class="dropdownmap">
+                                                                        <iframe src="https://maps.google.com/?ie=UTF8&amp;ll=51.428327,-0.086517&amp;spn=0.64303,1.674042&amp;t=m&amp;z=10&amp;output=embed"></iframe>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <!-- navbar End -->
+                        </div>
+                    </div>
+                    <!-- Navigation End -->
+                    <!-- Login Start -->
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-8">
+                        <div class="loginsec pull-right">
+                            <% if user_signed_in? %>
+                            <%= link_to edit_user_registration_path do %><i class="fa fa-pencil"></i>Edit Account<% end %>
+                            <%= link_to destroy_user_session_path, :method => :delete do %><i class="fa fa-sign-in"></i>Sign Out<% end %>
+                            <% else%> 
+                            <%= link_to new_user_session_path do %><i class="fa fa-lock"></i>Login<% end %>
+                            <%= link_to new_user_registration_path do %><i class="fa fa-sign-in"></i>Sign Up<% end %>
+                            <% end %>
+                           
+                        </div>
+                    </div>
+                    <!-- Login End -->
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Strip End -->
+    </header>
+    <!-- Header End -->
+	
+			<%= yield %>
+
+<footer class="style2">
+        <div class="custom-container">
+            <!-- Footer Videos Start -->
+
+            <!-- Footer Videos End -->
+            <hr>
+            <div class="row footerwidgets">
+                <div class="col-lg-3 col-md-6 col-sm-6 .col-xs-12">
+                    <!-- Text Widget start -->
+                    <div class="widget">
+                        <div class="text-widget">
+                            <div class="textsec">
+                                <a href="index.html"><img src="/assets/logo.png" alt=""></a>
+                                <br><br>
+                                <p>
+                                    Ut volutpat consectetur aliquam. Curabitur auctor in nis ulum ornare. Sed consequat, augue condimentum fermentum gravida, metus elit vehicula dui.
+                                </p>
+                                <ul class="contactdetail">
+                                    <li><i class="fa fa-mobile"></i> +1800 1234 56789</li>
+                                    <li><i class="fa fa-envelope"></i><a href="mailto:support@videoMagazine.com">support@videoMagazine.com</a></li>
+                                </ul>                            
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- Text Widget start -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 .col-xs-12">
+                    <!-- Flickr Widget start -->
+                    <div class="widget">
+                        <h2 class="heading">Recent Photos</h2>
+                        <div class="flickrgallery">
+                            <ul>   
+                                <% featured_galleries.each do |gal| %>
+                                 <li><%= link_to "#" do %> 
+                                    <%= image_tag gal.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
+                                 <% end %>
+                                <% end %>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- Flickr Widget End -->
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 .col-xs-12">
+                    <div class="widget">
+                        <h2 class="heading">Send us a message</h2>
+                        <div class="contact-forms">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 .col-xs-12">
+                                        <input type="text" placeholder="Your Name">
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 .col-xs-12">
+                                        <input type="text" placeholder="Email Address">
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 .col-xs-12">
+                                        <input type="text" placeholder="Subject">
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-12 .col-xs-12">
+                                        <textarea placeholder="Message"></textarea>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 .col-xs-12">
+                                        <button type="button" class="btn btn-primary backcolor"><span>Submit message</span><i class="fa fa-angle-right"></i></button>
+                                        <p>Make sure you put a valid email.</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-9 .col-xs-9">
+                    <p class="copyrights">© 2014 Eye On The County. All rights reserved. Designed by <a href="http://getoptimus.com"><strong>Optimus Labs</strong></a></p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3 .col-xs-3">
+                    <div class="socialnetworks">
+                        <ul class="pull-right">
+                            <li><a href="#" data-toggle="tooltip" title="" class="facebook" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" title="" class="youtube" data-original-title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" title="" class="twitter" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" title="" class="vimeo" data-original-title="Vimeo"><i class="fa fa-vimeo-square"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" title="" class="pinterest" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+
+
+
+	
+
+
+		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
+		<!--<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-XXXXX-X', 'domainname.com');
+			ga('send', 'pageview');
+		</script>
+		-->
+
+	</body>
+</html>
