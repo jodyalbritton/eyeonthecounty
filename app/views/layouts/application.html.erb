@@ -289,7 +289,7 @@
                             <ul>   
                                 <% featured_galleries.each do |gal| %>
                                  <li><%= link_to "#" do %> 
-                                    <%= image_tag gal.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
+                                    <%= image_tag gal.photos.first.file.url.try(:medium), :class=> "img-responsive hovereffect" %>
                                  <% end %>
                                 <% end %>
                                 </li>
