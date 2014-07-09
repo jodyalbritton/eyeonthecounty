@@ -59,10 +59,6 @@ class Admin::VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-<<<<<<< HEAD
-      params.require(:video).permit(:link, :views, :description, :likes, :dislikes, :author, :title, :duration, :yt_updated_at, :published_at, :uid)
-=======
       params.require(:video).permit(:link, :views, :description, :likes, :tag_list, :dislikes, :author, :title, :duration,:category, :category_name, :yt_updated_at, :published_at)
->>>>>>> upstream/master
     end
 end

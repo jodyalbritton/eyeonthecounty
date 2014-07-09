@@ -161,6 +161,8 @@
                                         <ul class="nav navbar-nav">
                                             <li> <%= link_to "Home", root_url %></li>
                                             <li> <%= link_to "Videos", videos_url %></li>
+                                            <li> <%= link_to "Sponsors", sponsors_url %></li>
+                                            <li> <%= link_to "Blog", blog_url %></li>
                                            
 
                                             
@@ -268,11 +270,11 @@
                                 <%= link_to root_url do %><img src="/assets/logo.png" alt=""><% end %>
                                 <br><br>
                                 <p>
-                                    Ut volutpat consectetur aliquam. Curabitur auctor in nis ulum ornare. Sed consequat, augue condimentum fermentum gravida, metus elit vehicula dui.
+                                   Got a story to share? We have our eye on the county.
                                 </p>
                                 <ul class="contactdetail">
-                                    <li><i class="fa fa-mobile"></i> +1800 1234 56789</li>
-                                    <li><i class="fa fa-envelope"></i><a href="mailto:support@videoMagazine.com">support@videoMagazine.com</a></li>
+                                    <li><i class="fa fa-mobile"></i> 903-910-9983</li>
+                                    <li><i class="fa fa-envelope"></i><a href="mailto:eyeonthecounty@gmail.com">eyeonthecounty@gmail.com</a></li>
                                 </ul>                            
                                 <div class="clearfix"></div>
                             </div>
@@ -289,7 +291,7 @@
                             <ul>   
                                 <% featured_galleries.each do |gal| %>
                                  <li><%= link_to "#" do %> 
-                                    <%= image_tag gal.photos.first.file.url.try(:medium), :class=> "img-responsive hovereffect" %>
+                                    <%= image_tag gal.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
                                  <% end %>
                                 <% end %>
                                 </li>

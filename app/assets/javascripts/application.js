@@ -18,4 +18,9 @@
 //= require slimbox2
 //= require jquery.bind_with_delay
 //= require yt_player.coffee
+//= require social/share.min
+//= require blueimp/jquery.blueimp-gallery.min
+//= require blueimp/blueimp-gallery-indicator
+//= require blueimp/blueimp-gallery-fullscreen
+//= require blueimp/bootstrap-image-gallery
 //= require_self

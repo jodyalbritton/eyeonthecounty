@@ -1,18 +1,18 @@
 <% if @videos.any? %>
   <div class="container">
     <div class="row">
-      <div class="col-md-6" id="player-wrapper"></div>
-      <div class="col-md-6">
-      <div style="overflow:scroll; height:400px; overflow-x: hidden;">
-      <% @videos.in_groups_of(2) do |group| %>
+     
+     
+      <% @videos.in_groups_of(3) do |group| %>
       
       <div class="row" >
                 <% group.each do |video| %>
                   <% if video %>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                      <%= link_to video_url(video) do %>
                       <div class="yt_video thumbnail">
                         <%= image_tag "https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg", alt: video.title,
-                                      class: 'yt_preview img-rounded', :"data-uid" => video.uid %>
+                                      class: 'img-rounded'%>
 
                         <div class="caption">
                           <h5><%= video.title %></h5>
@@ -24,13 +24,14 @@
                           </p>
                         </div>
                       </div>
+                      <% end %>
                     </div>
                   <% end %>
                 <% end %>
-              </div>
+          
 
             <% end %>
-          </div>
+          
           </div>
         <% end %>
       </div>

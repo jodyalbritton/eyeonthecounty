@@ -1,0 +1,16 @@
+<div class="row">
+      <% @galleries.each do |gallery| %>
+      <div class="col-xs-3">
+        <div class="thumb-contents thumbnail">
+            <%= link_to gallery_url(gallery) do %>
+            <%= image_tag gallery.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
+            <% end %>
+            <div class="btn-toolbar">
+              <div class="btn-group">
+            
+              </div>
+            </div>
+          </div>
+      </div>
+      <% end %>
+    </div>
