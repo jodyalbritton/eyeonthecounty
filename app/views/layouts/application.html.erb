@@ -290,7 +290,7 @@
                         <div class="flickrgallery">
                             <ul>   
                                 <% featured_galleries.each do |gal| %>
-                                 <li><%= link_to "#" do %> 
+                                 <li><%= link_to gallery_url(gal) do %> 
                                     <%= image_tag gal.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
                                  <% end %>
                                 <% end %>
