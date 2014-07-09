@@ -1,4 +1,7 @@
 class GalleriesController < ApplicationController
+	add_breadcrumb "Home", :root_url
+ 	add_breadcrumb "Galleries", :galleries_url
+
 	def index
 		@galleries = Gallery.all
 	end
