@@ -164,9 +164,10 @@
                                 <div class="blogpost">
                                     <% unless featured_posts.size == 0 %>
                                     <figure>
-                                        <a href="blogdetail-double-sidebar.html">
-                                            <img class="img-responsive hovereffect" src="assets/img25.jpg" alt="" />
-                                        </a>
+                                         <%= link_to post_url(featured_posts.first) do %>
+                                            <%= image_tag featured_posts.first.photo.url(:medium), :class=> "img-responsive hovereffect" %>
+                                            
+                                        <% end %>
                                         <figcaption>
                                             <ul>
                                                 <li><i class="fa fa-calendar"></i><%= featured_posts.first.published_at %></li>
@@ -183,7 +184,8 @@
                                         <p>
                                             <%= featured_posts.first.excerpt %>
                                         </p>
-                                        <a href="#" class="btn btn-primary btn-xs backcolor">Read More</a>
+                                        <%= link_to "Read More", post_url(featured_posts.first), :class=> "btn btn-primary btn-xs backcolor" %>
+                                        
                                     </div>
                                     <div class="clearfix"></div>
                                   <% end %>
@@ -194,9 +196,11 @@
                                     <% featured_posts.last(3).each do |post| %>
                                     <li>
                                         <div class="media">
-                                            <a href="blogdetail-double-sidebar.html" class="pull-left">
-                                                <img src="assets/img1.jpg" class="media-object img-responsive hovereffect" alt="" />
-                                            </a>
+                                           
+                                                <%= link_to post_url(post), :class=>"pull-left" do %>
+                                                <%= image_tag post.photo.url(:thumb), :class=> "media-object img-responsive hovereffect" %>
+                                                
+                                                <% end %>
                                             <div class="media-body">
                                                 <h4><%= link_to post.title, post_path(post) %></h4>
                                                 <ul>
@@ -521,7 +525,7 @@
                    
                     <!-- Advertisement start -->
                     <div class="widget">
-                        <img src="assets/adv1.gif" class="img-responsive" alt="">
+                        <%= image_tag "adv1.gif", :class=>"img-responsive" %>
                     </div>
                     <div class="clearfix"></div>
                     <!-- Advertisement End -->

@@ -1,0 +1,129 @@
+<!-- Contents Start -->
+    <div class="contents">
+        <div class="custom-container">
+            <div class="row">
+                <!-- Bread Crumb Start -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active"><%= @post.title %></li>
+                    </ol>
+                </div>
+                <!-- Bread Crumb End -->
+                <!-- Content Column Start -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 equalcol conentsection">
+                    <!-- Blog Detail Started -->
+                    <div class="blogdetail sections">
+          
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <div class="avatar">
+                                    <figure>
+                                    
+                                    </figure>
+                                    <h5>By <%= @post.author.full_name %></h5>
+                                    <p>
+                                        <%= @post.author.try(:bio) %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                                <div class="blogtext">
+                                    <h2 class="heading"><%= @post.title %></h2>
+                                    <div class="clearfix"></div>
+                                    <div class="blogmetas">
+                                        <ul>
+                                            <li><i class="fa fa-calendar"></i><%= @post.published_at %></li>
+                                            <li>
+                                                <i class="fa fa-align-justify"><%= @post.category.name %></i>
+                                                
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <%= sanitize(@post.body) %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Blog Detail End -->
+                    <div class="clearfix"></div>
+                    <!-- Contents Section Started -->
+                    <div class="sections">
+                        <h2 class="heading">Related Posts</h2>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="blogposttwo">
+                                    <figure>
+                                        <a href="blogdetail-double-sidebar.html">
+                                            <img src="images/img10.jpg" class="img-responsive hovereffect" alt="" />
+                                        </a>
+                                    </figure>
+                                    <div class="text">
+                                        <h4><a href="blogdetail-double-sidebar.html">Waters Years</a></h4>
+                                        <ul>
+                                            <li><i class="fa fa-calendar"></i>25-03-2014</li>
+                                            <li>
+                                                <i class="fa fa-align-justify"></i>
+                                                <a href="#">News</a>
+                                            </li>
+                                        </ul>
+                                        <a href="blogdetail-double-sidebar.html" class="btn btn-primary btn-xs backcolor">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="blogposttwo">
+                                    <figure>
+                                        <a href="blogdetail-double-sidebar.html">
+                                            <img src="images/img11.jpg" class="img-responsive hovereffect" alt="" />
+                                        </a>
+                                    </figure>
+                                    <div class="text">
+                                        <h4><a href="#">Fourth Winged</a></h4>
+                                        <ul>
+                                            <li><i class="fa fa-calendar"></i>25-03-2014</li>
+                                            <li>
+                                                <i class="fa fa-align-justify"></i>
+                                                <a href="#">News</a>
+                                            </li>
+                                        </ul>
+                                        <a href="blogdetail-double-sidebar.html" class="btn btn-primary btn-xs backcolor">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="blogposttwo">
+                                    <figure>
+                                        <a href="#">
+                                            <img src="images/img12.jpg" class="img-responsive hovereffect" alt="" />
+                                        </a>
+                                    </figure>
+                                    <div class="text">
+                                        <h4><a href="blogdetail-double-sidebar.html">Gathering Creepeth</a></h4>
+                                        <ul>
+                                            <li><i class="fa fa-calendar"></i>25-03-2014</li>
+                                            <li>
+                                                <i class="fa fa-align-justify"></i>
+                                                <a href="#">News</a>
+                                            </li>
+                                        </ul>
+                                        <a href="blogdetail-double-sidebar.html" class="btn btn-primary btn-xs backcolor">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contents Section End -->
+          
+                    <div class="clearfix"></div>
+                </div>
+                <!-- Content Column End -->
+            </div>
+        </div>
+    </div>
+    <!-- Contents End -->
