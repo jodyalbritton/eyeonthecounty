@@ -11,7 +11,9 @@
 // about supported directives.
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery-ui
+//= require jquery.isotope
+//= require masonry
 //= require bootstrap.min
 //= require functions
 //= require responsiveCarousel

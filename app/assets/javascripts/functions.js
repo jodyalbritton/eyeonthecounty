@@ -278,3 +278,4 @@ jQuery(function(jQuery) {
     "use strict";
     jQuery('.equalcol').responsiveEqualHeightGrid();
 });
+

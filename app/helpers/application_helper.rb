@@ -11,6 +11,9 @@ module ApplicationHelper
   	def featured_videos
   		Video.order(:published_at).first(4)
   	end
+    def most_viewed
+      Video.order(:views).first(4)
+    end
     def featured_galleries
       Gallery.order(:created_at).first(6)
     end

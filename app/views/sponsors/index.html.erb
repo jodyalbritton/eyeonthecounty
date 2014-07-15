@@ -1,53 +1,59 @@
-<!-- PAGE TITLE -->
+<div class="container">
+	<div class="sponsor-header">
+		<h2> Eye On The County is made possible by the following fine sponsors </h2>
+	</div>
+	<div class="portfolioFilter">
+	    <ul class="nav nav-pills">
+	    <li><a href="#" data-filter="*" class="current">All Categories</a></li>
+	    <% @sponsors.each do |sponsor| %>
+	    <li><a href="#" data-filter=".<%= sponsor.category.name%> "><%= sponsor.category.name%></a></li>
+	    <% end %>
+	 	</ul>
+	</div>
+	 
+	<div class="portfolioContainer">
+	 	<% @sponsors.each do |sponsor| %>
+	 	
+	    	<div class="<%= sponsor.category.name %>">
+	    		<%= link_to sponsor_url(sponsor) do %>
+		  		<%= image_tag sponsor.avatar.url(:medium) %>
+		  		<div class="text-center">
+		  		 <h4><%= link_to sponsor.name, sponsor_url(sponsor) %></h4>
+		  		 </div>
+		  		<% end %>
+	    	</div> 
 
-
-			<section id="portfolio" class="container">
-
-				<h2><strong>Explore</strong> our sponsors</h2>
-
-				<p class="lead">Eye On The County is proundly sponsored by the following great local businesses. </p>
-
-				<ul class="nav nav-pills isotope-filter isotope-filter" data-sort-id="isotope-list" data-option-key="filter">
-					<li data-option-value="*" class="active"><a href="#">Show All</a></li>
-					<% @categories.each do |category| %>
-						<%= raw ("<li data-option-value='.#{category.name}'><a href='#'>#{category.name}</a></li>") %>
-					<% end %>
-				</ul>
-
-
-				<div class="row">
-
-					<ul class="sort-destination isotope lightbox" data-sort-id="isotope-list" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
-
-					<% @sponsors.each do |sponsor| %>
-						<%= raw ("<li class='isotope-item col-sm-6 col-md-3 #{sponsor.category.name}'>") %><!-- item -->
-							<div class="item-box">
-								<p><%= sponsor.name %></p>
-								<figure>
-									<%= link_to sponsor_url(sponsor), :class=> "item-hover"  do%>
-									
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> Sponsor
-										</span>
-									<% end %>
-									<%= image_tag sponsor.avatar.url(:large), :class=>"img-responsive", size: "260x260" %>					
-								</figure>
-							</div>
-						</li>
-					  <% end %>
-						
-
-					</ul>
-
-				</div><!-- /.masonry-container -->
-
-				<!-- CALLOUT -->
-				<div class="bs-callout text-center nomargin-bottom">
-					<h3>Want to have your business featured here? <a href="#" target="_blank" class="btn btn-primary btn-lg">Yes, let's work together!</a></h3>
-				</div>
-				<!-- /CALLOUT -->
-
-
-			</section>
+	   
+	    <% end %>
+	 
+	</div>
+</div>
+<script>
+$(window).load(function(){
+    var $container = $('.portfolioContainer');
+    $container.isotope({
+        filter: '*',
+        animationOptions: {
+            duration: 750,
+            easing: 'linear',
+            queue: false
+        }
+    });
+ 
+    $('.portfolioFilter a').click(function(){
+        $('.portfolioFilter .current').removeClass('current');
+        $(this).addClass('current');
+ 
+        var selector = $(this).attr('data-filter');
+        $container.isotope({
+            filter: selector,
+            animationOptions: {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+            }
+         });
+         return false;
+    }); 
+});
+</script>

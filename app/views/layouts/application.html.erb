@@ -17,7 +17,7 @@
 
 		<!-- CORE CSS -->
 		  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-		 
+		
  
  		 <%= csrf_meta_tags %>
   		 <%= favicon_link_tag 'favicon.ico' %>
@@ -256,12 +256,12 @@
 	
 			<%= yield %>
 
-<footer class="style2">
+<footer class="style3">
         <div class="custom-container">
             <!-- Footer Videos Start -->
 
             <!-- Footer Videos End -->
-            <hr>
+         
             <div class="row footerwidgets">
                 <div class="col-lg-3 col-md-6 col-sm-6 .col-xs-12">
                     <!-- Text Widget start -->
@@ -291,8 +291,11 @@
                         <div class="flickrgallery">
                             <ul>   
                                 <% featured_galleries.each do |gal| %>
-                                 <li><%= link_to gallery_url(gal) do %> 
+                                 <li>
+                                 <% unless gal.photos.size == 0 %>
+                                 <%= link_to gallery_url(gal) do %> 
                                     <%= image_tag gal.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
+                                 <% end %>
                                  <% end %>
                                 <% end %>
                                 </li>

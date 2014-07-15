@@ -5,6 +5,6 @@ class SponsorsController < ApplicationController
   end
 
   def show 
-  	@sponsor = Sponsor.find(params[:id])
+  	@sponsor = Sponsor.friendly.find(params[:id])
   end
 end
