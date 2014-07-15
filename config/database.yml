@@ -50,7 +50,7 @@ test:
 production:
   <<: *default
 
-  database: #changeme_production
+  database: eotc_production
   username: root
   password: <%= ENV['EOTC_DATABASE_PASSWORD'] %>
 
