@@ -13,9 +13,9 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.isotope
+//= require typeahead
 //= require masonry
 //= require bootstrap.min
-//= require functions
 //= require responsiveCarousel
 //= require slimbox2
 //= require jquery.bind_with_delay
@@ -25,4 +25,5 @@
 //= require blueimp/blueimp-gallery-indicator
 //= require blueimp/blueimp-gallery-fullscreen
 //= require blueimp/bootstrap-image-gallery
+//= require functions
 //= require_self

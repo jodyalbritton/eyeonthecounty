@@ -155,6 +155,7 @@ iframe {
 header {
 	width:100%;
 	position: relative;
+	z-index: 2;
 	
 }
 /* Header Top Strip
@@ -306,7 +307,7 @@ header.style2 .searchbox ul{
 	position:absolute;
 	width:100%;
 	left:0;
-	z-index:1;
+	z-index:2;
 }
 .searchbox input[type="text"]{
 	float:left;
@@ -330,7 +331,7 @@ header.style2 .searchbox ul{
 	color:#6d6f75;
 	position:absolute;
 	right:0;
-	z-index:1;
+	z-index:2;
 }
 header.style2 .searchbox input[type="submit"]{
 	border-left:#4C4F57 solid 2px;
@@ -365,8 +366,9 @@ header.style2 .searchbox input[type="text"]:-ms-input-placeholder {
     position:fixed;
     top:0px;
     opacity: .95;
-    background: #191b1f;
+    background: #FFF;
     border-bottom: #000 solid 1px !important;
+    z-index: 2;
 }
 .stick li.open a.dropdown-toggle{
 	color: #000 !important;
@@ -694,7 +696,7 @@ header.style2 .searchbox input[type="text"]:-ms-input-placeholder {
 	margin-left: -11px;
 	height: 11px;
 	bottom: -11px;
-	background: url(../images/pointer.png) 0px 0px no-repeat;
+	background: url(<%= asset_path "pointer.png" %>) 0px 0px no-repeat;
 }
 .videoslider .tabs .tab_item {
 	display: block;

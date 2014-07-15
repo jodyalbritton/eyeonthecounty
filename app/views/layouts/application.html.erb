@@ -10,7 +10,11 @@
 		<meta name="Author" content="Jody Albritton" />
 
 		<!-- mobile settings -->
-		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
 
 		<!-- WEB FONTS -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet" type="text/css" />
@@ -35,7 +39,7 @@
 		
 
 		<!-- Morenizr -->
-		 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		
 	</head>
 	<body>
 <div class="wrapper">
@@ -122,12 +126,12 @@
                     <!-- Search Start -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="searchbox">
-                            <form>
+                            <%= form_tag("/search/all", method: :get) do %>
                                 <ul>
-                                    <li><input type="text" placeholder="Search Videos"></li>
+                                    <li><%= text_field_tag  :query, params[:query],   id: "query" %></li>
                                     <li class="pull-right"><input type="submit" value="GO"></li>
                                 </ul>
-                            </form>
+                            <% end %>
                         </div>
                     </div>
                     <!-- Search End -->
@@ -143,7 +147,7 @@
         </div>
         <!-- Logo + Search + Advertisment End -->
         <!-- Navigation Strip Start -->
-        <div class="navigationstrip bordercolor-top">
+        <div class="stickynav navigationstrip bordercolor-top">
             <div class="custom-container">
                 <div class="row">
                     <!-- Navigation Start -->
@@ -159,7 +163,7 @@
                                     </div>
                                     <div id="navbar-collapse-1" class="navbar-collapse collapse">
                                         <ul class="nav navbar-nav">
-                                            <li> <%= link_to "Home", root_url %></li>
+                                            <li class="dropdown"> <%= link_to "Home", root_url %></li>
                                             <li> <%= link_to "Videos", videos_url %></li>
                                             <li> <%= link_to "Sponsors", sponsors_url %></li>
                                             <li> <%= link_to "Galleries", galleries_url %></li>
@@ -355,12 +359,19 @@
     </footer>
 </div>
 
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 
 
+	  
 
-	
+       <script>     
+           $("#query").typeahead({
+            name: "query",
+            remote: "/search/autocomplete?query=%QUERY"
+          });
 
+        </script>
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 		<!--<script>
