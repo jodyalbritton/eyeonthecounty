@@ -47,7 +47,8 @@
                    
                     <!-- Advertisement start -->
                     <div class="widget">
-                        <img src="assets/adv2.gif" class="img-responsive" alt="">
+                        <%= image_tag "adv2.gif", :class=> "img-responsive" %>
+                       
                     </div>
                     <div class="clearfix"></div>
                     <!-- Advertisement End -->
@@ -83,10 +84,12 @@
                                                  class: 'img-rounded img-responsive hovereffect' %>
                                                 <% end %>
                                                 <!-- Video Thumbnail End -->
-                                                <a href="#" class="playicon"><i class="fa fa-play-circle-o"></i></a>
+                                                <%= link_to video_url(video), :class=> "playicon" do %>
+                                                    <i class="fa fa-play-circle-o"></i>
+                                                <% end %>
                                                 <!-- Video Title + Info Start -->
                                                 <figcaption>
-                                                    <h2><a href="video-detail-double-sidebar.html"><%= video.title %></a></h2>
+                                                    <h2><%= link_to video.title, video_url(video) %></h2>
                                                     <ul>
                                                         <li><i class="fa fa-heart"></i><%= video.likes %></li>
                                                       
