@@ -11,8 +11,8 @@
 // about supported directives.
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.autocomplete
-//= require jquery.ui.sortable
+//= require jquery-ui/autocomplete
+//= require jquery-ui/sortable
 //= require jquery.jcrop
 //= require admin/pixel-admin
 //= require admin/events
@@ -32,6 +32,7 @@
 //= require admin/jquery.ui.touch-punch
 //= require admin/jquery.tokeninput
 //= require admin/file-input
+//= require admin/expanding-input
 //= require admin/froala-editor.min.js
 //= require admin/jquery.bind_with_delay
 //= require dataTables/jquery.dataTables

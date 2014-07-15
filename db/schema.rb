@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708194158) do
+ActiveRecord::Schema.define(version: 20140712180038) do
 
   create_table "attachments", force: true do |t|
     t.integer  "attachable_id"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20140708194158) do
   add_index "clients", ["client_owner_id"], name: "index_clients_on_client_owner_id", using: :btree
 
   create_table "contacts", force: true do |t|
-    t.string   "full_name"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -257,8 +256,10 @@ ActiveRecord::Schema.define(version: 20140708194158) do
     t.datetime "updated_at"
     t.string   "email"
     t.integer  "contact_id"
+    t.string   "ancestry"
   end
 
+  add_index "messages", ["ancestry"], name: "index_messages_on_ancestry", using: :btree
   add_index "messages", ["client_id"], name: "index_messages_on_client_id", using: :btree
   add_index "messages", ["contact_id"], name: "index_messages_on_contact_id", using: :btree
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
@@ -549,11 +550,13 @@ ActiveRecord::Schema.define(version: 20140708194158) do
     t.datetime "closed_at"
     t.datetime "pended_at"
     t.datetime "in_progress_at"
+    t.integer  "user_id"
   end
 
   add_index "tickets", ["client_id"], name: "index_tickets_on_client_id", using: :btree
   add_index "tickets", ["severity_type_id"], name: "index_tickets_on_severity_type_id", using: :btree
   add_index "tickets", ["ticket_status_id"], name: "index_tickets_on_ticket_status_id", using: :btree
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
   create_table "timesheets", force: true do |t|
     t.datetime "clocked_in"
