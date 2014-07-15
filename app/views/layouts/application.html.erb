@@ -113,7 +113,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="logo">
                             <%= link_to root_url do %>
-                            <img src="/assets/logo.png" alt="Video Magazine">
+                            <%= image_tag "logo.png" %>
                             <% end %>
                            
                         </div>
@@ -134,7 +134,7 @@
                     <!-- Advertisment Start -->
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <figure class="header-adv">
-                            <a href="#"><img src="/assets/adv.gif" class="img-responsive" alt="Advertisment"></a>
+                            <a href="#"><%= image_tag "adv.gif",  :class=>"img-responsive" :alt=>"Advertisment"%></a>
                         </figure>
                     </div>
                     <!-- Advertisment End -->
@@ -268,7 +268,7 @@
                     <div class="widget">
                         <div class="text-widget">
                             <div class="textsec">
-                                <%= link_to root_url do %><img src="/assets/logo.png" alt=""><% end %>
+                                <%= link_to root_url do %><%= image_tag "logo.png" %><% end %>
                                 <br><br>
                                 <p>
                                    Got a story to share? We have our eye on the county.
