@@ -13,7 +13,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.isotope
-//= require typeahead
+//= require jquery-ui/autocomplete
 //= require masonry
 //= requre  social/jquery.sharrre
 //= require bootstrap.min

@@ -127,7 +127,7 @@
                         <div class="searchbox">
                             <%= form_tag("/search/all", method: :get) do %>
                                 <ul>
-                                    <li><%= text_field_tag  :query, params[:query],   id: "query" %></li>
+                                    <li><%= text_field_tag  :query, params[:query],   id: "query", :data => {autocomplete_source: "/search/autocomplete"} %></li>
                                     <li class="pull-right"><input type="submit" value="GO"></li>
                                 </ul>
                             <% end %>
@@ -364,14 +364,13 @@
 
 	  
 
-       <script>     
-           $("#query").typeahead({
-            name: "query",
-            remote: "/search/autocomplete?query=%QUERY"
-          });
-
-        </script>
-
+<script>
+ $(function() {
+        $( "#query" ).autocomplete({
+          source: $('#query').data('autocomplete-source')
+    });
+  });
+</script>
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 		<!--<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -386,3 +385,13 @@
 
 	</body>
 </html>
+
+
+<style>
+ul.ui-autocomplete
+{
+    background: #FFF;
+    z-index: 4;
+    width: 300px;
+}
+</style>

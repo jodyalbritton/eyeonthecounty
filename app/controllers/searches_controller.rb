@@ -1,8 +1,8 @@
 class SearchesController < ApplicationController
 	
 	def autocomplete
-    	
-    	 render json: Video.search(params[:query], autocomplete: true, limit: 10).map(&:title)
+		 @result = Video.order(:title).where("title like ?", "%#{params[:term]}%")
+    	 render json: @result.map(&:title)
   	end
 
 	def all

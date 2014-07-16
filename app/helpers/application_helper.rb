@@ -34,6 +34,10 @@ module ApplicationHelper
       Post.tag_counts_on(:tags) + Video.tag_counts_on(:tags)
     end
 
+    def video_search
+      Video.search(params[:query], fields: [{title: :text_start}], limit: 10).map(&:title).to_json
+    end 
+
     def facebook_likes(url)
     uri = URI("http://graph.facebook.com/"+url)
     data = Net::HTTP.get(uri)
