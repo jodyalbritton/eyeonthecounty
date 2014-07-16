@@ -13,12 +13,12 @@
                     <div class="row"> 
                         <!-- Uploader Start -->
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 uploader">
-                            <figure> <a href="video-list.html"><img src="/assets/avatar2.jpg" alt=""></a> </figure>
+                            
                             <div class="aboutuploader">
                                 <h5><a href="video-list.html">By <%= @video.author %></a></h5>
                                 <time datetime="25-12-2014">Uploaded : <%= @video.published_at %></time>
                                 <br>
-                                <a class="btn btn-primary btn-xs backcolor" href="#">Watch All Videos</a> </div>
+                            </div>
                         </div>
                         <!-- Uploader End --> 
                         <!-- Video Stats Start -->
@@ -42,15 +42,20 @@
                                 <li class="facebook">
                                     <i class="fa fa-facebook"></i>
                                     <div class="shaingstats">
-                                        <h5><%= @video.facebook_likes %></h5>
-                                        <p>Likes</p>
+                                        <% likes = facebook_likes(video_url(@video)) %>
+                                        <% if  likes == nil %>
+                                        <h5>0</h5>
+                                        <% else %>
+                                        <h5><%= likes %></h5>
+                                        <% end %>
+                                        <p>Shares</p>
                                     </div>
                                     <a href="http://www.facebook.com" class="link" target="_blank"></a>
                                 </li>
                                 <li class="twitter">
                                     <i class="fa fa-twitter"></i>
                                     <div class="shaingstats">
-                                        <h5></h5>
+                                        <h5><%= twitter_shares(video_url(@video)) %></h5>
                                         <p>Tweets</p>
                                     </div>
                                     <a href="http://www.twitter.com" class="link" target="_blank"></a>
@@ -70,23 +75,82 @@
                 </div>
                 <!-- Video Stats and Sharing End --> 
                 <!-- Like This Video Start -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="col-sm-offset-5 share-button">
-
-                    </div>
-                   
-                </div>
+                <div id="demo1" data-url="http://sharrre.com" data-text="Make your sharing widget with Sharrre (jQuery Plugin)" data-title="share"></div>
                 <!-- Like This Video Enb --> 
             </div>
         </div>
     </div>
 
     <script>
-    new Share(".share-button", {
-          networks: {
-            facebook: {
-              app_id: "abc123"
-            }
-          }
-        });
+$('#demo1').sharrre({
+  share: {
+    googlePlus: true,
+    facebook: true,
+    twitter: true
+  },
+  buttons: {
+    googlePlus: {size: 'tall', annotation:'bubble'},
+    facebook: {layout: 'box_count'},
+    twitter: {count: 'vertical', via: '_JulienH'}
+  },
+  hover: function(api, options){
+    $(api.element).find('.buttons').show();
+  },
+  hide: function(api, options){
+    $(api.element).find('.buttons').hide();
+  },
+  enableTracking: true
+});
     </script>
+
+    <style>
+    .sharrre .box{
+  float:left;
+
+}
+.sharrre .count {
+  color:#444444;
+  display:block;
+  font-size:17px;
+  line-height:34px;
+  height:34px;
+  padding:4px 0;
+  position:relative;
+  text-align:center;
+  text-decoration:none;
+  width:50px;
+  background-color:#eee;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px; 
+}
+.sharrre .share {
+  color:#FFFFFF;
+  display:block;
+  font-size:11px;
+  height:16px;
+  line-height:16px;
+  margin-top:3px;
+  padding:0;
+  text-align:center;
+  text-decoration:none;
+  width:50px;
+  background-color:#9CCE39;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px; 
+}
+.sharrre .buttons {
+  display:none;
+  position:absolute;
+  margin-left:50px;
+  z-index:10;
+  background-color:#fff;
+}
+.sharrre .button {
+  float:left;
+  max-width:50px;
+  margin-left:10px;
+}
+    </style>
+

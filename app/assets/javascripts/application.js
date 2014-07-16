@@ -15,12 +15,12 @@
 //= require jquery.isotope
 //= require typeahead
 //= require masonry
+//= requre  social/jquery.sharrre
 //= require bootstrap.min
 //= require responsiveCarousel
 //= require slimbox2
 //= require jquery.bind_with_delay
 //= require yt_player.coffee
-//= require social/share.min
 //= require blueimp/jquery.blueimp-gallery.min
 //= require blueimp/blueimp-gallery-indicator
 //= require blueimp/blueimp-gallery-fullscreen

@@ -1,4 +1,5 @@
 module ApplicationHelper
+    
     def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
     id = new_object.object_id
@@ -32,5 +33,21 @@ module ApplicationHelper
     def featured_tags
       Post.tag_counts_on(:tags) + Video.tag_counts_on(:tags)
     end
+
+    def facebook_likes(url)
+    uri = URI("http://graph.facebook.com/"+url)
+    data = Net::HTTP.get(uri)
+    @likes = JSON.parse(data)['shares']
+    end
+  
+
+ 
+
+
+  def twitter_shares(url)
+    data = open("http://urls.api.twitter.com/1/urls/count.json?url=#{URI.escape(url)}").read
+    data = JSON.parse(data)
+    data['count']
+  end
 
 end

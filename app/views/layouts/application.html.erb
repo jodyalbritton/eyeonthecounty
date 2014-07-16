@@ -10,10 +10,8 @@
 		<meta name="Author" content="Jody Albritton" />
 
 		<!-- mobile settings -->
-		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="HandheldFriendly" content="True">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    
 
 
 		<!-- WEB FONTS -->
@@ -28,6 +26,7 @@
 
 	   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
        <script src="https://www.youtube.com/iframe_api"></script>
+       <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 		<!-- THEME CSS -->
 	
@@ -359,7 +358,7 @@
     </footer>
 </div>
 
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        
 
 
 
