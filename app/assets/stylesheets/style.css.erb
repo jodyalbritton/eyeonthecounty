@@ -155,7 +155,7 @@ iframe {
 header {
 	width:100%;
 	position: relative;
-	z-index: 2;
+	
 	
 }
 /* Header Top Strip
@@ -272,7 +272,7 @@ header.style2 .logobar {
 	width:100%;
 	padding:25px 20px 0 20px;
 }
-.searchbox ul{
+.searchbox-rounded ul{
 	float:left;
 	width:100%;
 	border:#DADADA solid 2px;
@@ -282,6 +282,18 @@ header.style2 .logobar {
 	position:relative;
 	padding-left:38px;
 }
+
+.searchbox ul{
+	float:left;
+	width:100%;
+	border:#DADADA solid 2px;
+	height:34px;
+	background:#ffffff;
+	border-radius:0px;
+	position:relative;
+	padding-left:38px;
+}
+
 header.style2 .searchbox ul{
 	border:#4C4F57 solid 2px;
 	background: transparent;
@@ -307,7 +319,7 @@ header.style2 .searchbox ul{
 	position:absolute;
 	width:100%;
 	left:0;
-	z-index:2;
+	
 }
 .searchbox input[type="text"]{
 	float:left;
@@ -331,7 +343,7 @@ header.style2 .searchbox ul{
 	color:#6d6f75;
 	position:absolute;
 	right:0;
-	z-index:2;
+	
 }
 header.style2 .searchbox input[type="submit"]{
 	border-left:#4C4F57 solid 2px;
@@ -355,6 +367,7 @@ header.style2 .searchbox input[type="text"]:-ms-input-placeholder {
 	min-height:50px;
 	border-top:solid 5px;
 	background: #fff;
+	z-index: 2;
 	border-bottom: #e3e3e3 solid 1px !important;
 	-webkit-transition: all .5s ease-in-out;
 	-moz-transition: all .5s ease-in-out;
@@ -367,7 +380,7 @@ header.style2 .searchbox input[type="text"]:-ms-input-placeholder {
     top:0px;
     opacity: .95;
     background: #FFF;
-    border-bottom: #000 solid 1px !important;
+    
     z-index: 2;
 }
 .stick li.open a.dropdown-toggle{
@@ -375,7 +388,7 @@ header.style2 .searchbox input[type="text"]:-ms-input-placeholder {
 	background-color: #fff !important;
 }
 .stick .loginsec a {
-	color: #fff !important;
+	
 }
 @media (max-width: 1023px) {
 	.stick {

@@ -17,6 +17,7 @@
   right: 0;
   bottom: 0;
   left: 0;
+
   /* Prevent artifacts in Mozilla Firefox: */
   -moz-backface-visibility: hidden;
 }
@@ -27,10 +28,11 @@
   max-width: 100%;
   max-height: 100%;
   opacity: 1;
+
 }
 .blueimp-gallery {
   position: fixed;
-  z-index: 999999;
+  z-index: 9999;
   overflow: hidden;
   background: #000;
   background: rgba(0, 0, 0, 0.9);
@@ -42,7 +44,7 @@
 }
 .blueimp-gallery-carousel {
   position: relative;
-  z-index: 999999;
+  z-index: auto;
   margin: 1em auto;
   /* Set the carousel width/height ratio to 16/9: */
   padding-bottom: 56.25%;
@@ -53,6 +55,7 @@
 .blueimp-gallery-display {
   display: block;
   opacity: 1;
+  z-index: 5;
 }
 .blueimp-gallery > .slides {
   position: relative;

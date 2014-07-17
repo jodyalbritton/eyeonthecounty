@@ -9,19 +9,20 @@
                 <!-- Bread Crumb End -->
                 <!-- Content Column Start -->
     <div class="row">
-      <% @galleries.each do |gallery| %>
-      <div class="col-xs-3">
-        <div class="thumb-contents thumbnail">
-            <%= link_to gallery_url(gallery) do %>
-            <%= image_tag gallery.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
+      <% @galleries.each do |gal| %>
+     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+        <figure class="gallery">
+            <% unless gal.photos.size == 0 %>
+            <%= link_to gallery_url(gal) do %>
+                <%= image_tag gal.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
+                
             <% end %>
-            <div class="btn-toolbar">
-              <div class="btn-group">
-            
-              </div>
-            </div>
-          </div>
-      </div>
+            <figcaption class="backcolor">
+                <h4><a href="#"><%= gal.name %></a></h4>
+            </figcaption>
+        </figure>
+      <% end %>
+    </div>
       <% end %>
     </div>
   </div>

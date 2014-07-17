@@ -1,3 +1,38 @@
 // Place all the styles related to the searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ui-autocomplete {
+	position: absolute;
+	cursor: default;
+	border: 2px solid #ccc;
+	padding: 0px 0;
+	border-radius: 2px; 
+	background-color: white;
+	z-index: 4;
+}
+.ui-autocomplete > li {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none; 
+	
+}
+.ui-autocomplete > li > a {
+    color: #555555;
+    cursor: pointer !important;
+    display: block;
+ 
+    padding: 5px 18px;
+    text-decoration: none; 
+}
+.ui-autocomplete > li > a:hover {
+      text-decoration: none; 
+      color: white;
+
+  }
+
+.ui-autocomplete > li:hover{
+  background-color: #FFFAF0;
+  
+}
