@@ -17,13 +17,11 @@
 //= require masonry
 //= requre  social/jquery.sharrre
 //= require bootstrap.min
+//= require functions
 //= require responsiveCarousel
 //= require slimbox2
-//= require jquery.bind_with_delay
-//= require yt_player.coffee
 //= require blueimp/jquery.blueimp-gallery.min
 //= require blueimp/blueimp-gallery-indicator
 //= require blueimp/blueimp-gallery-fullscreen
 //= require blueimp/bootstrap-image-gallery
-//= require functions
 //= require_self

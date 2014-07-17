@@ -48,7 +48,7 @@ Author :	Kax Miller
 
 /* Import some more css files
 ================================================== */
-@import url("<%= font_path 'font-awesome' %>");
+@import url("<%= stylesheet_path 'font-awesome' %>");
 * {
 	padding: 0px;
 	margin: 0px;
@@ -679,6 +679,41 @@ header.style2 .searchbox input[type="text"]:-ms-input-placeholder {
 .videobox2 .vidopts ul li i{
 	margin-right: 10px;
 }
+
+
+/* Slider
+================================================== */
+#myCarousel .nav a small {
+    display:block;
+}
+#myCarousel .active-tab  {
+	background-color: #000000;
+}
+
+#myCarousel .nav a:hover{
+	background: #000000;
+}
+#myCarousel .nav a {
+    border-radius:0px;
+    color :#ffffff;
+}
+
+#myCarousel a.playicon{
+	width:128px;
+	height: 128px;
+	display: block;
+	margin-top: -320px;
+	margin-left: -64px;
+	left: 50%;
+	top: 50%;
+	position: absolute;
+}
+#myCarousel a.playicon i{
+	color: #fff;
+	font-size: 147px;
+	margin-top: -8px;
+	opacity: .5;
+}
 /* Video Slider tabs
 ================================================== */
 .videoslider {
@@ -965,7 +1000,7 @@ figure {
 	overflow: hidden;
 }
 figure > a {
-	overflow: hidden;
+	
 }
 .hovereffect {
 	display: inline-block;
