@@ -26,7 +26,7 @@
                                         <% end %>
                                     </figure>
                                     <div class="text">
-                                        <h4><a href="blogdetail-double-sidebar.html"><%= post.title %></a></h4>
+                                        <h4><%= link_to post.title, post_url(post) %></h4>
                                         <ul>
                                             <li><i class="fa fa-calendar"></i><%= post.published_at.strftime("%m/%d/%Y") %></li>
                                             <li>
@@ -58,6 +58,7 @@
                     <div class="widget">
                         <h2 class="heading">Recent Posts</h2>
                         <ul class="recentposts">
+                            
                             <li>
                                 <h5><a href="blogdetail-double-sidebar.html">Dolor. Proin. Sit rhoncus ut odio nascetur</a></h5>
                                 <p class="date">25 April 2013</p>
@@ -73,4 +74,7 @@
                     <div class="clearfix"></div>
                     <!-- Advertisement End -->
                 </div>
+            </div>
+        </div>
+    </div>
                 <!-- Gray Sidebar End -->

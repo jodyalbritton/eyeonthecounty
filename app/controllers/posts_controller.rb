@@ -16,11 +16,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    add_breadcrumb "Post", :post_path
+    
 	  @post = Post.friendly.find(params[:id])
     @tags = ActsAsTaggableOn::Tag.all
      @categories = Category.all
     @posts_by_month = Post.all.group_by { |post| post.published_at.strftime("%B") }
+    add_breadcrumb @post.title, :post_path
   end
 
 
