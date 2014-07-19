@@ -267,14 +267,14 @@
                           <h2 class="heading">Sponsored Videos</h2>
                           <% featured_videos.each do |video| %>
                           <!-- Video Box Start -->
+                                    <div class="video-sidebar-container">
                                         <div class="videobox2">
                                             <figure>
                                                 <!-- Video Thumbnail Start --> 
                                               <%= link_to video_url(video) do %> 
-                                     <%= image_tag "https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg", alt: video.title,
-                                  class: 'img-responsive' %>
-                                    
-                                <% end %>
+                                              <%= image_tag "https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg", alt: video.title,
+                                                class: 'img-responsive' %>
+                                                <% end %>
                                                 <!-- Video Thumbnail End -->
                                                 <!-- Video Info Start -->
                                                 <div class="vidopts">
@@ -287,10 +287,13 @@
                                                 <!-- Video Info End -->
                                             </figure>
                                             <!-- Video Title Start -->
+                                            <div class="text-center">
                                             <h4><%= link_to video.title.first(30), video_url(video) %></h4>
+                                            </div>
                                             <!-- Video Title End -->
                                         </div>
                                         <!-- Video Box End -->
+                                </div>
                         <% end %>
                         
                        
