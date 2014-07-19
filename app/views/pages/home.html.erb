@@ -68,10 +68,14 @@
         <% else %>
          <div class="item">
         <% end %>
+        <%= link_to video_url(video) do %>
            <%= image_tag "https://img.youtube.com/vi/#{video.uid}/hqdefault.jpg", alt: video.title,
                                                  class: 'img-responsive' %>
+        <% end %>
            <div class="carousel-caption">
-            <a href="#" class="playicon"><i class="fa fa-play-circle-o"></i></a>
+           <%= link_to video_url(video), :class=>"playicon" do %>
+            <i class="fa fa-play-circle-o"></i>
+           <% end %>
           </div>
         </div><!-- End Item -->
         <% end %>
@@ -261,236 +265,32 @@
                     <!-- Hot Videos Widget start -->
                     <div class="widget">
                         <h2 class="heading">Sponsored Videos</h2>
-                        <div class="carousals">
-                            <div id="carouselvideo" class="carousel slide" data-ride="carousel">
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <!-- Video Box Start -->
-                                        <div class="videobox2">
-                                            <figure>
-                                                <!-- Video Thumbnail Start --> 
-                                                <a href="video-detail-double-sidebar.html">
-                                                    <img src="assets/img23.jpg" class="img-responsive hovereffect" alt="" />
-                                                </a>
-                                                <!-- Video Thumbnail End -->
-                                                <!-- Video Info Start -->
-                                                <div class="vidopts">
-                                                    <ul>
-                                                        <li><i class="fa fa-heart"></i>1056</li>
-                                                        <li><i class="fa fa-clock-o"></i>12:23</li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <!-- Video Info End -->
-                                            </figure>
-                                            <!-- Video Title Start -->
-                                            <h4><a href="video-detail-double-sidebar.html">Waters Years</a></h4>
-                                            <!-- Video Title End -->
-                                        </div>
-                                        <!-- Video Box End -->
-                                        <!-- Video Box Start -->
-                                        <div class="videobox2">
-                                            <figure>
-                                                <!-- Video Thumbnail Start --> 
-                                                <a href="video-detail-double-sidebar.html">
-                                                    <img src="assets/img24.jpg" class="img-responsive hovereffect" alt="" />
-                                                </a>
-                                                <!-- Video Thumbnail End -->
-                                                <!-- Video Info Start -->
-                                                <div class="vidopts">
-                                                    <ul>
-                                                        <li><i class="fa fa-heart"></i>1056</li>
-                                                        <li><i class="fa fa-clock-o"></i>12:23</li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <!-- Video Info End -->
-                                            </figure>
-                                            <!-- Video Title Start -->
-                                            <h4><a href="video-detail-double-sidebar.html">Fourth Winged</a></h4>
-                                            <!-- Video Title End -->
-                                        </div>
-                                        <!-- Video Box End -->
-                                        <!-- Video Box Start -->
-                                        <div class="videobox2">
-                                            <figure>
-                                                <!-- Video Thumbnail Start --> 
-                                                <a href="video-detail-double-sidebar.html">
-                                                    <img src="assets/img25.jpg" class="img-responsive hovereffect" alt="" />
-                                                </a>
-                                                <!-- Video Thumbnail End -->
-                                                <!-- Video Info Start -->
-                                                <div class="vidopts">
-                                                    <ul>
-                                                        <li><i class="fa fa-heart"></i>1056</li>
-                                                        <li><i class="fa fa-clock-o"></i>12:23</li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <!-- Video Info End -->
-                                            </figure>
-                                            <!-- Video Title Start -->
-                                            <h4><a href="video-detail-double-sidebar.html">Gathering Creepeth</a></h4>
-                                            <!-- Video Title End -->
-                                        </div>
-                                        <!-- Video Box End -->
-                                    </div>
-                                    <div class="item">
-                                        <!-- Video Box Start -->
-                                        <div class="videobox2">
-                                            <figure>
-                                                <!-- Video Thumbnail Start --> 
-                                                <a href="video-detail-double-sidebar.html">
-                                                    <img src="assets/img1.jpg" class="img-responsive hovereffect" alt="" />
-                                                </a>
-                                                <!-- Video Thumbnail End -->
-                                                <!-- Video Info Start -->
-                                                <div class="vidopts">
-                                                    <ul>
-                                                        <li><i class="fa fa-heart"></i>1056</li>
-                                                        <li><i class="fa fa-clock-o"></i>12:23</li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <!-- Video Info End -->
-                                            </figure>
-                                            <!-- Video Title Start -->
-                                            <h4><a href="video-detail-double-sidebar.html">Firmament Fly</a></h4>
-                                            <!-- Video Title End -->
-                                        </div>
-                                        <!-- Video Box End -->
-                                        <!-- Video Box Start -->
-                                        <div class="videobox2">
-                                            <figure>
-                                                <!-- Video Thumbnail Start --> 
-                                                <a href="video-detail-double-sidebar.html">
-                                                    <img src="assets/img2.jpg" class="img-responsive hovereffect" alt="" />
-                                                </a>
-                                                <!-- Video Thumbnail End -->
-                                                <!-- Video Info Start -->
-                                                <div class="vidopts">
-                                                    <ul>
-                                                        <li><i class="fa fa-heart"></i>1056</li>
-                                                        <li><i class="fa fa-clock-o"></i>12:23</li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <!-- Video Info End -->
-                                            </figure>
-                                            <!-- Video Title Start -->
-                                            <h4><a href="video-detail-double-sidebar.html">First Sixth Be</a></h4>
-                                            <!-- Video Title End -->
-                                        </div>
-                                        <!-- Video Box End -->
-                                        <!-- Video Box Start -->
-                                        <div class="videobox2">
-                                            <figure>
-                                                <!-- Video Thumbnail Start --> 
-                                                <a href="video-detail-double-sidebar.html">
-                                                    <img src="assets/img3.jpg" class="img-responsive hovereffect" alt="" />
-                                                </a>
-                                                <!-- Video Thumbnail End -->
-                                                <!-- Video Info Start -->
-                                                <div class="vidopts">
-                                                    <ul>
-                                                        <li><i class="fa fa-heart"></i>1056</li>
-                                                        <li><i class="fa fa-clock-o"></i>12:23</li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <!-- Video Info End -->
-                                            </figure>
-                                            <!-- Video Title Start -->
-                                            <h4><a href="video-detail-double-sidebar.html">Spirit Evening</a></h4>
-                                            <!-- Video Title End -->
-                                        </div>
-                                        <!-- Video Box End -->
-                                    </div>
-                                    <div class="item">
-                                        <!-- Video Box Start -->
-                                        <div class="videobox2">
-                                            <figure>
-                                                <!-- Video Thumbnail Start --> 
-                                                <a href="video-detail-double-sidebar.html">
-                                                    <img src="assets/img4.jpg" class="img-responsive hovereffect" alt="" />
-                                                </a>
-                                                <!-- Video Thumbnail End -->
-                                                <!-- Video Info Start -->
-                                                <div class="vidopts">
-                                                    <ul>
-                                                        <li><i class="fa fa-heart"></i>1056</li>
-                                                        <li><i class="fa fa-clock-o"></i>12:23</li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <!-- Video Info End -->
-                                            </figure>
-                                            <!-- Video Title Start -->
-                                            <h4><a href="video-detail-double-sidebar.html">Waters Fourth Winged</a></h4>
-                                            <!-- Video Title End -->
-                                        </div>
-                                        <!-- Video Box End -->
-                                        <!-- Video Box Start -->
-                                        <div class="videobox2">
-                                            <figure>
-                                                <!-- Video Thumbnail Start --> 
-                                                <a href="video-detail-double-sidebar.html">
-                                                    <img src="assets/img5.jpg" class="img-responsive hovereffect" alt="" />
-                                                </a>
-                                                <!-- Video Thumbnail End -->
-                                                <!-- Video Info Start -->
-                                                <div class="vidopts">
-                                                    <ul>
-                                                        <li><i class="fa fa-heart"></i>1056</li>
-                                                        <li><i class="fa fa-clock-o"></i>12:23</li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <!-- Video Info End -->
-                                            </figure>
-                                            <!-- Video Title Start -->
-                                            <h4><a href="video-detail-double-sidebar.html">Created Gathering</a></h4>
-                                            <!-- Video Title End -->
-                                        </div>
-                                        <!-- Video Box End -->
-                                        <!-- Video Box Start -->
-                                        <div class="videobox2">
-                                            <figure>
-                                                <!-- Video Thumbnail Start --> 
-                                                <a href="video-detail-double-sidebar.html">
-                                                    <img src="assets/img6.jpg" class="img-responsive hovereffect" alt="" />
-                                                </a>
-                                                <!-- Video Thumbnail End -->
-                                                <!-- Video Info Start -->
-                                                <div class="vidopts">
-                                                    <ul>
-                                                        <li><i class="fa fa-heart"></i>1056</li>
-                                                        <li><i class="fa fa-clock-o"></i>12:23</li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <!-- Video Info End -->
-                                            </figure>
-                                            <!-- Video Title Start -->
-                                            <h4><a href="#">Yielding Fifth Waters</a></h4>
-                                            <!-- Video Title End -->
-                                        </div>
-                                        <!-- Video Box End -->
-                                    </div>
-                                </div>
-                                <div class="carouselpagination">
-                                    <!-- Indicators -->
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#carouselvideo" data-slide-to="0" class="active"></li>
-                                        <li data-target="#carouselvideo" data-slide-to="1"></li>
-                                        <li data-target="#carouselvideo" data-slide-to="2"></li>
-                                    </ol>
-                                </div>
-                            </div>
+                            <% featured_videos.each do |video| %>
+                            <div class="videobox">
+                            <figure>
+                                <!-- Video Thumbnail Start --> 
+                                <%= link_to video_url(video) do %> 
+                                     <%= image_tag "https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg", alt: video.title,
+                                  class: 'img-rounded img-responsive hovereffect' %>
+                                    
+                                <% end %>
+                                <!-- Video Thumbnail End -->
+                                <!-- Video Title + Info Start -->
+                                <figcaption>
+                                    <h2><%= link_to video.title, video_url(video) %></h2>
+                                    <ul>
+                                        <li><i class="fa fa-heart"></i><%= video.likes %></li>
+                                        <li><i class="fa fa-clock-o"></i><%= video.duration %></li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </figcaption>
+                                <!-- Video Title + Info End -->
+                            </figure>
                         </div>
+                        <% end %>
                     </div>
                     <div class="clearfix"></div>
+
                     <!-- Hot Videos Widget End -->
                     <!-- Categories Widget start -->
                     <div class="widget">

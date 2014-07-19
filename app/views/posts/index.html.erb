@@ -58,18 +58,19 @@
                     <div class="widget">
                         <h2 class="heading">Recent Posts</h2>
                         <ul class="recentposts">
-                            
+                            <% @recent_posts.each do |post| %>
                             <li>
-                                <h5><a href="blogdetail-double-sidebar.html">Dolor. Proin. Sit rhoncus ut odio nascetur</a></h5>
-                                <p class="date">25 April 2013</p>
+                                <h5><%= link_to post.title, post_url(post) %></h5>
+                                <p class="date"><%= post.published_at %></p>
                             </li>
+                            <% end %>
                         </ul>
                     </div>
                     <div class="clearfix"></div>
                     <!-- Recent Post Widget end -->
                       <!-- Advertisement start -->
                     <div class="widget">
-                        <img src="images/adv2.gif" class="img-responsive" alt="">
+                        <%= image_tag "adv2.gif", :class=> "img-responsive" %>
                     </div>
                     <div class="clearfix"></div>
                     <!-- Advertisement End -->

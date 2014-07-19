@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
     @posts = Post.order(:published_at).page(params[:page])
   	end 
+    @recent_posts = Post.where(:draft => false).order(:published_at).first(10)
     @tags = ActsAsTaggableOn::Tag.all
     @categories = Category.all
   	@posts_by_month = Post.all.group_by { |post| post.published_at.strftime("%B %Y") }
