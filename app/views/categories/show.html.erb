@@ -9,9 +9,32 @@
 	<h1> <%= @category.name %> </h1>
 
 	<h2> Videos </h2>
+		<% if @category.videos %>
+			<% @category.videos.each do |video| %>
+		    <% end %>
+	    <% else %>
+	    	<h2>No videos in the <%= @category.name %> category.</h2>
+	    <% end %>
 	<h2> Sponsors </h2>
+		<% if @category.sponsors %>
+			<% @category.sponsors.each do |video| %>
+		    <% end %>
+		<% else %>
+			<h2>No sponsors in the <%= @category.name %> category.</h2>
+	    <% end %>
 	<h2> Blog Posts </h2>
+		<% if @category.posts %>
+			<% @category.posts.each do |video| %>
+		    <% end %>
+		<% else %>
+			<h2>No posts in the <%= @category.name %> category.</h2>
+	    <% end %>
 	<h2> Galleries </h2>
-
+		<% if @category.galleries %>
+			<% @category.galleries.each do |video| %>
+		    <% end %>
+		<% else %>
+			<h2>No galleries in the <%= @category.name %> category.</h2>
+	    <% end %>
 	</div>
 </div>
