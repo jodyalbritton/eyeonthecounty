@@ -4,19 +4,19 @@
 								
 	</header>
 	<div class="divider half-margins"><!-- divider -->
-							<i class="fa fa-star"></i>
+							
 	</div>
 	<p class="lead"><%= @sponsor.description %></p>
 	<div class="row">
 		<div class="col-md-8">
 		
 			<div>
-			 <%=raw("<iframe width='560' height='315'  src='//www.youtube.com/embed/#{@sponsor.video_url}' frameborder='0' allowfullscreen></iframe>") %>
+			
    			 </div>
 		</div>
 		<div class="col-md-4">
 			<div>
-			<%= image_tag @sponsor.avatar.url(:large), :class=> "img-responsive"%>
+			<%= image_tag @sponsor.avatar.url(:large), :class=> "img-responsive sponsor-img"%>
 			</div>
 			<h3>Sponsor Details</h3>
 			<b>Phone:<br></b><%= @sponsor.phone %><br>

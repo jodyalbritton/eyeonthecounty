@@ -264,31 +264,38 @@
                     <!-- Tags Widget End -->
                     <!-- Hot Videos Widget start -->
                     <div class="widget">
-                        <h2 class="heading">Sponsored Videos</h2>
-                            <% featured_videos.each do |video| %>
-                            <div class="videobox">
-                            <figure>
-                                <!-- Video Thumbnail Start --> 
-                                <%= link_to video_url(video) do %> 
+                          <h2 class="heading">Sponsored Videos</h2>
+                          <% featured_videos.each do |video| %>
+                          <!-- Video Box Start -->
+                                        <div class="videobox2">
+                                            <figure>
+                                                <!-- Video Thumbnail Start --> 
+                                              <%= link_to video_url(video) do %> 
                                      <%= image_tag "https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg", alt: video.title,
-                                  class: 'img-rounded img-responsive hovereffect' %>
+                                  class: 'img-responsive' %>
                                     
                                 <% end %>
-                                <!-- Video Thumbnail End -->
-                                <!-- Video Title + Info Start -->
-                                <figcaption>
-                                    <h2><%= link_to video.title, video_url(video) %></h2>
-                                    <ul>
-                                        <li><i class="fa fa-heart"></i><%= video.likes %></li>
-                                        <li><i class="fa fa-clock-o"></i><%= video.duration %></li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </figcaption>
-                                <!-- Video Title + Info End -->
-                            </figure>
-                        </div>
+                                                <!-- Video Thumbnail End -->
+                                                <!-- Video Info Start -->
+                                                <div class="vidopts">
+                                                    <ul>
+                                                        <li><i class="fa fa-heart"></i><%= video.likes %></li>
+                                                        <li><i class="fa fa-clock-o"></i><%= video.duration %></li>
+                                                    </ul>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <!-- Video Info End -->
+                                            </figure>
+                                            <!-- Video Title Start -->
+                                            <h4><%= link_to video.title.first(30), video_url(video) %></h4>
+                                            <!-- Video Title End -->
+                                        </div>
+                                        <!-- Video Box End -->
                         <% end %>
-                    </div>
+                        
+                       
+                      
+                   
                     <div class="clearfix"></div>
 
                     <!-- Hot Videos Widget End -->
