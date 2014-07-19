@@ -8,33 +8,113 @@
 	    </div>
 	<h1> <%= @category.name %> </h1>
 
-	<h2> Videos </h2>
-		<% if @category.videos %>
-			<% @category.videos.each do |video| %>
+	
+		<div class="row">
+		<h2> Videos </h2>
+			<% if @category.videos.size > 0 %>
+				<% @category.videos.each do |video| %>
+					    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"> 
+				            <!-- Video Box Start -->
+				            <div class="videobox2">
+				                <figure> 
+				                    <!-- Video Thumbnail Start --> 
+				                     <%= link_to video_url(video) do %> 
+				                                 <%= image_tag "https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg", alt: video.title,
+				                              class: 'img-rounded img-responsive hovereffect' %>
+				                                
+				                            <% end %>
+				                    <!-- Video Thumbnail End --> 
+				                    <!-- Video Info Start -->
+				                    <div class="vidopts">
+				                        <ul>
+				                            <li><i class="fa fa-heart"></i><%= video.views %></li>
+				                            <li><i class="fa fa-clock-o"></i><%= video.duration %></li>
+				                        </ul>
+				                        <div class="clearfix"></div>
+				                    </div>
+				                    <!-- Video Info End --> 
+				                </figure>
+				                <!-- Video Title Start -->
+				                <h4><%= link_to video.title, video_url(video) %></h4>
+				                <!-- Video Title End --> 
+				            </div>
+				            <!-- Video Box End --> 
+       					 </div>
+			    <% end %>
+		    <% else %>
+		    	<h3>No videos in the <%= @category.name %> category.</h3>
 		    <% end %>
-	    <% else %>
-	    	<h2>No videos in the <%= @category.name %> category.</h2>
-	    <% end %>
-	<h2> Sponsors </h2>
-		<% if @category.sponsors %>
+	    </div>
+	    <div class="clearfix"></div>
+		<div class="row">
+		<h2> Sponsors </h2>
+		<% if @category.sponsors.size > 0 %>
 			<% @category.sponsors.each do |video| %>
+
 		    <% end %>
 		<% else %>
-			<h2>No sponsors in the <%= @category.name %> category.</h2>
+			<h3>No sponsors in the <%= @category.name %> category.</h3>
+
 	    <% end %>
-	<h2> Blog Posts </h2>
-		<% if @category.posts %>
-			<% @category.posts.each do |video| %>
+		</div>
+		<div class="clearfix"></div>
+		<div class="row">
+		<h2> Blog Posts </h2>
+			<% if @category.posts.size > 0 %>
+				<% @category.posts.each do |post| %>
+					    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				        <div class="blogposttwo">
+				            <figure>
+				            	<%= link_to post_url(post) do %>
+				            		<%= image_tag post.photo.url(:medium), :class=> "img-responsive hovereffect" %>
+				            	<% end %> 
+				            </figure>
+				            <div class="text">
+				                <h4><a href="blogdetail-double-sidebar.html"><% post.title %></a></h4>
+				                <ul>
+				                    <li><i class="fa fa-calendar"></i><% post.published_at %></li>
+				                    <li>
+				                        <i class="fa fa-align-justify"></i>
+				                        <a href="#"><% post.category.name %></a>
+				                    </li>
+				                </ul>
+				                <p>
+				                    <%= post.excerpt %>
+				                </p>
+				                <%= link_to "Read More", post_url(post), :class=> "btn btn-primary btn-xs backcolor" %>
+				            </div>
+				        </div>
+				    </div>
+			    <% end %>
+			<% else %>
+				<h3>No posts in the <%= @category.name %> category.</h3>
+				<div class="clearfix"></div>
 		    <% end %>
-		<% else %>
-			<h2>No posts in the <%= @category.name %> category.</h2>
-	    <% end %>
+	    </div>
+	<div class="row">
 	<h2> Galleries </h2>
-		<% if @category.galleries %>
-			<% @category.galleries.each do |video| %>
-		    <% end %>
+		<% if @category.galleries.size > 0 %>
+			<% @category.galleries.each do |gal| %>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">     
+			        <figure class="gallery">
+			            <% unless gal.photos.size == 0 %>
+			            <%= link_to gallery_url(gal) do %>
+			                <%= image_tag gal.photos.first.file.url(:medium), :class=> "img-responsive hovereffect" %>
+			                
+			            <% end %>
+			            <figcaption class="backcolor">
+			                <h4><%= link_to gal.name, gallery_path(gal) %></h4>
+			            </figcaption>
+			        </figure>
+			    
+			      </div>
+			        <% end %>
+			  	<% end %>
+			
 		<% else %>
-			<h2>No galleries in the <%= @category.name %> category.</h2>
+			<h3>No galleries in the <%= @category.name %> category.</h3>
 	    <% end %>
+	 </div>
+	 <div class="clearfix"></div>
 	</div>
 </div>
