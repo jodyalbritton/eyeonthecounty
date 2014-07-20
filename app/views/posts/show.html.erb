@@ -1,3 +1,19 @@
+<% content_for :page_title,  @post.title %>
+<% content_for :page_description, @post.excerpt  %>
+
+<% content_for :meta_tags do %>
+<!-- Twitter Card data --> 
+<meta name="twitter:card" value="<%= @post.excerpt %>">
+
+<!-- Open Graph data --> 
+<meta property="og:title" content="<%= @post.title %>" /> 
+<meta property="og:type" content="article" /> 
+<meta property="og:url" content="<%= post_url(@post) %>" />
+<meta property="og:image" content="<%= @post.photo.url(:medium) %>" />
+<meta property="og:description" content="<%= @post.excerpt %>" />
+  
+<% end %>
+
 <!-- Contents Start -->
     <div class="contents">
         <div class="custom-container">

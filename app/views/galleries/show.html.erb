@@ -1,3 +1,18 @@
+<% content_for :page_title,  @gallery.name %>
+<% content_for :page_description, @gallery.description  %>
+
+<% content_for :meta_tags do %>
+<!-- Twitter Card data --> 
+<meta name="twitter:card" value="<%= @gallery.description %>">
+
+<!-- Open Graph data --> 
+<meta property="og:title" content="<%= @gallery.name %>" /> 
+<meta property="og:type" content="article" /> 
+<meta property="og:url" content="<%= gallery_url(@gallery) %>" />
+<meta property="og:image" content="<%= @gallery.photos.first.file.url(:medium)%>" />
+<meta property="og:description" content="<%= @gallery.description %>" />
+  
+<% end %>
  <div class="contents">
    <div class="custom-container">
     <!-- Bread Crumb Start -->

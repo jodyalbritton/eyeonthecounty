@@ -12,8 +12,8 @@
 	<div class="portfolioFilter">
 	    <ul class="nav nav-pills">
 	    <li><a href="#" data-filter="*" class="current">All Categories</a></li>
-	    <% @sponsors.each do |sponsor| %>
-	    <li><a href="#" data-filter=".<%= sponsor.category.name%> "><%= sponsor.category.name%></a></li>
+	    <% @categories.each do |category| %>
+	    <li><a href="#" data-filter=".<%= category.name%> "><%= category.name%></a></li>
 	    <% end %>
 	 	</ul>
 	</div>

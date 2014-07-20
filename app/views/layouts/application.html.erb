@@ -4,10 +4,9 @@
 <!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
-		<title>Eye On The County</title>
-		<meta name="keywords" content="henderson, county, news" />
-		<meta name="description" content="" />
-		<meta name="Author" content="Jody Albritton" />
+		<title><%= yield(:page_title) %></title>
+        <meta name="description" content="<%= yield(:page_description) %>" />
+        <%= yield(:meta_tags) %>
 
 		<!-- mobile settings -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -18,9 +17,9 @@
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet" type="text/css" />
 
 		<!-- CORE CSS -->
-		  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-		
- 
+         <%= javascript_include_tag :modernizr, 'data-turbolinks-track' => true  %>
+		 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+         <%= canonical_tag -%>
  		 <%= csrf_meta_tags %>
   		 <%= favicon_link_tag 'favicon.ico' %>
 
@@ -28,17 +27,6 @@
        <script src="https://www.youtube.com/iframe_api"></script>
        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
-		<!-- THEME CSS -->
-	
-	
-	
-		
-
-		
-		
-
-		<!-- Morenizr -->
-		
 	</head>
 	<body>
 <div class="wrapper">

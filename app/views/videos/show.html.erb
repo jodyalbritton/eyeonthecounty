@@ -1,3 +1,18 @@
+<% content_for :page_title,  @video.title %>
+<% content_for :page_description, @video.description  %>
+
+<% content_for :meta_tags do %>
+<!-- Twitter Card data --> 
+<meta name="twitter:card" value="<%= @video.description %>">
+
+<!-- Open Graph data --> 
+<meta property="og:title" content="<%= @video.title %>" /> 
+<meta property="og:type" content="article" /> 
+<meta property="og:url" content="<%= video_url(@video) %>" />
+<meta property="og:image" content="<%= raw("https://img.youtube.com/vi/#{@video.uid}/mqdefault.jpg") %>" />
+<meta property="og:description" content="<%= @video.description %>" />
+  
+<% end %>
 <div class="videoplayersec">
         <div class="vidcontainer">
             <div class="row"> 
