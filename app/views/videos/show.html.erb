@@ -61,7 +61,7 @@
                                    
                                    
                                 </li>
-                                <li class="twitter" id="twitter" data-url="<%= video_url(@video) %>" data-text="<%= @video.description %>">
+                                <li class="twitter" id="twitter" data-url="<%= video_url(@video) %>" data-text="<%= @video.title %>">
                      
                                    
                                 </li>
@@ -112,7 +112,8 @@ $('#googlePlus').sharrre({
   },
   enableHover: false,
   enableTracking: true,
-  template: ' <i class="fa fa-google-plus"></i><div class="sharingstats"><h5>{total}</h5><p>Shares</p></div>',
+  urlCurl: "",
+  template: ' <i class="fa fa-google-plus"></i><div class="sharingstats text-center"><h5>{total}</h5><p>Shares</p></div>',
   click: function(api, options){
     api.simulateClick();
     api.openPopup('googlePlus');
