@@ -6,11 +6,14 @@
 <meta name="twitter:card" value="<%= @video.description %>">
 
 <!-- Open Graph data --> 
+ <meta name="author" content="<%= @video.author %>">
 <meta property="og:title" content="<%= @video.title %>" /> 
-<meta property="og:type" content="video" /> 
+<meta property="og:site_name" content="Eye On The County">
+<meta property="og:type" content="article">
 <meta property="og:url" content="<%= video_url(@video) %>" />
 <meta property="og:image" content="<%= @video.thumbnail.url(:large) %>" />
 <meta property="og:description" content="<%= @video.description %>" />
+
   
 <% end %>
 <div class="videoplayersec">
