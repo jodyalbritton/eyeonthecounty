@@ -9,6 +9,7 @@
 <meta property="og:title" content="<%= @video.title %>" /> 
 <meta property="og:type" content="video" /> 
 <meta property="og:url" content="<%= video_url(@video) %>" />
+<meta property="og:image" content="<%= raw("https://img.youtube.com/vi/#{@video.uid}/hqdefault.jpg") %>" />
 <meta property="og:video" content="<%= @video.url %>" />
 <meta property="og:description" content="<%= @video.description %>" />
   
