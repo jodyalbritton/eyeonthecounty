@@ -70,7 +70,27 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- Video Share End --> 
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="blogtext">
+                                    <h2 class="heading"><%= @video.title %></h2>
+                                    <div class="clearfix"></div>
+                                    <div class="blogmetas">
+                                        <ul>
+                                            <li> 
+                                              <i class="fa fa-align-justify"></i> <%= link_to @video.category.name, category_url(@video.category) %>
+                                            </li>
+                                            <li> 
+                                              <i class="fa fa-tags"></i> 
+                                                <% @video.tags.each do |tag| %>
+                                                  <%= link_to tag.name, tag_url(tag) %>
+                                                <% end %>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                      <%= sanitize(@video.description) %>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <!-- Video Stats and Sharing End --> 
