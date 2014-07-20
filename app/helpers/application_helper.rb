@@ -10,10 +10,14 @@ module ApplicationHelper
   	end
 
   	def featured_videos
-  		Video.order(:published_at).first(4)
+  		Video.where(:sponsored => false).order(:published_at).first(4)
   	end
+
+    def sponsored_videos 
+      Video.where(:sponsored => true).first(3)
+    end 
     def most_viewed
-      Video.order(:views).first(4)
+      Video.where(:sponsored => false).order(:views).first(4)
     end
     def featured_galleries
       Gallery.order(:created_at).first(6)
@@ -38,20 +42,8 @@ module ApplicationHelper
       Video.search(params[:query], fields: [{title: :text_start}], limit: 10).map(&:title).to_json
     end 
 
-    def facebook_likes(url)
-    uri = URI("http://graph.facebook.com/"+url)
-    data = Net::HTTP.get(uri)
-    @likes = JSON.parse(data)['shares']
+    def new_contact_message
+      Message.new
     end
-  
-
- 
-
-
-  def twitter_shares(url)
-    data = open("http://urls.api.twitter.com/1/urls/count.json?url=#{URI.escape(url)}").read
-    data = JSON.parse(data)
-    data['count']
-  end
 
 end

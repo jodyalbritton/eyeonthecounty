@@ -63,28 +63,18 @@
                         <div class="socialnetworks">
                             <ul class="pull-right">
                                 <li>
-                                    <a href="#" data-toggle="tooltip" title="" data-placement="bottom" class="facebook" data-original-title="Facebook">
+                                    <a href="http://www.facebook.com/eyeonthecountyhc" data-toggle="tooltip" title="" data-placement="bottom" class="facebook" data-original-title="Facebook">
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" data-toggle="tooltip" title="" data-placement="bottom" class="youtube" data-original-title="Youtube">
+                                    <a href="https://www.youtube.com/user/g4reel54" data-toggle="tooltip" title="" data-placement="bottom" class="youtube" data-original-title="Youtube">
                                         <i class="fa fa-youtube"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" data-toggle="tooltip" title="" data-placement="bottom" class="twitter" data-original-title="Twitter">
+                                    <a href="http://www.twitter.com/EOTCHC" data-toggle="tooltip" title="" data-placement="bottom" class="twitter" data-original-title="Twitter">
                                         <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" title="" data-placement="bottom" class="vimeo" data-original-title="Vimeo">
-                                        <i class="fa fa-vimeo-square"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" title="" data-placement="bottom" class="pinterest" data-original-title="Pinterest">
-                                        <i class="fa fa-pinterest"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -180,29 +170,33 @@
                                                                 </div>
                                                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                                                     <div class="contact-forms">
-                                                                        <form>
+                                                                        <%= form_for (new_contact_message) do |f| %>
                                                                             <div class="row">
                                                                                 <div class="col-lg-6 col-md-6 col-sm-12 .col-xs-12">
-                                                                                    <input type="text" placeholder="Your Name">
+                                                                                    <%= f.text_field :full_name, :placeholder => "Name" %> 
                                                                                 </div>
                                                                                 <div class="col-lg-6 col-md-6 col-sm-12 .col-xs-12">
-                                                                                    <input type="text" placeholder="Email Address">
+                                                                                   <%= f.text_field :email, :placeholder => "Email Address" %> 
                                                                                 </div>
                                                                                 <div class="col-lg-12 col-md-12 col-sm-12 .col-xs-12">
-                                                                                    <input type="text" placeholder="Subject">
+                                                                                   <%= f.text_field :subject, :placeholder => "Subject" %> 
                                                                                 </div>
                                                                                 <div class="col-lg-12 col-md-12 col-sm-12 .col-xs-12">
-                                                                                    <textarea placeholder="Message"></textarea>
+                                                                                     <%= f.text_area :body, :placeholder => "Subject" %> 
                                                                                 </div>
+                                                                                  <%= f.hidden_field :source, :value => "CONTACT_FORM" %>
+                                                                                  <%= f.hidden_field :recipient, :value => Setting.company_email %>
                                                                                 <div class="col-lg-12 col-md-12 col-sm-12 .col-xs-12">
-                                                                                    <button type="button" class="btn btn-primary backcolor">
+                                                                                    <%= f.submit :class=> "btn btn-primary backcolor" do %>
+                                                                                    
                                                                                         <span>Submit message</span>
                                                                                         <i class="fa fa-angle-right"></i>
-                                                                                    </button>
+                                                                                    
+                                                                                    <% end %>
                                                                                     <p>Make sure you put a valid email.</p>
                                                                                 </div>
                                                                             </div>
-                                                                        </form>
+                                                                        <% end %>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden-xs">
@@ -308,26 +302,33 @@
                     <div class="widget">
                         <h2 class="heading">Send us a message</h2>
                         <div class="contact-forms">
-                            <form>
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-12 .col-xs-12">
-                                        <input type="text" placeholder="Your Name">
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-12 .col-xs-12">
-                                        <input type="text" placeholder="Email Address">
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-12 .col-xs-12">
-                                        <input type="text" placeholder="Subject">
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-12 .col-xs-12">
-                                        <textarea placeholder="Message"></textarea>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-12 .col-xs-12">
-                                        <button type="button" class="btn btn-primary backcolor"><span>Submit message</span><i class="fa fa-angle-right"></i></button>
-                                        <p>Make sure you put a valid email.</p>
-                                    </div>
+                          <%= form_for (new_contact_message) do |f| %>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 .col-xs-12">
+                                    <%= f.text_field :full_name, :placeholder => "Name" %> 
                                 </div>
-                            </form>
+                                <div class="col-lg-6 col-md-6 col-sm-12 .col-xs-12">
+                                   <%= f.text_field :email, :placeholder => "Email Address" %> 
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 .col-xs-12">
+                                   <%= f.text_field :subject, :placeholder => "Subject" %> 
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 .col-xs-12">
+                                     <%= f.text_area :body, :placeholder => "Message" %> 
+                                </div>
+                                  <%= f.hidden_field :source, :value => "CONTACT_FORM" %>
+                                  <%= f.hidden_field :recipient, :value => Setting.company_email %>
+                                <div class="col-lg-12 col-md-12 col-sm-12 .col-xs-12">
+                                    <%= f.submit :class=> "btn btn-primary backcolor" do %>
+                                    
+                                        <span>Submit message</span>
+                                        <i class="fa fa-angle-right"></i>
+                                    
+                                    <% end %>
+                                    <p>Make sure you put a valid email.</p>
+                                </div>
+                            </div>
+                        <% end %>
                         </div>
                     </div>
                 </div>
@@ -342,11 +343,21 @@
                 <div class="col-lg-2 col-md-2 col-sm-3 .col-xs-3">
                     <div class="socialnetworks">
                         <ul class="pull-right">
-                            <li><a href="#" data-toggle="tooltip" title="" class="facebook" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" title="" class="youtube" data-original-title="Youtube"><i class="fa fa-youtube"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" title="" class="twitter" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" title="" class="vimeo" data-original-title="Vimeo"><i class="fa fa-vimeo-square"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" title="" class="pinterest" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                        <li>
+                                    <a href="http://www.facebook.com/eyeonthecountyhc" data-toggle="tooltip" title="" data-placement="bottom" class="facebook" data-original-title="Facebook">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/user/g4reel54" data-toggle="tooltip" title="" data-placement="bottom" class="youtube" data-original-title="Youtube">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.twitter.com/EOTCHC" data-toggle="tooltip" title="" data-placement="bottom" class="twitter" data-original-title="Twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
