@@ -15,7 +15,7 @@
 //= require jquery.isotope
 //= require jquery-ui/autocomplete
 //= require masonry
-//= requre  social/jquery.sharrre
+//= require social/jquery.sharrre
 //= require bootstrap.min
 //= require functions
 //= require responsiveCarousel
