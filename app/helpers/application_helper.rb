@@ -10,7 +10,7 @@ module ApplicationHelper
   	end
 
   	def featured_videos
-  		Video.where(:sponsored => false).order(:published_at).first(4)
+  		Video.where(:sponsored => false).order(:published_at).reverse.first(4)
   	end
 
     def sponsored_videos 
@@ -23,7 +23,7 @@ module ApplicationHelper
       Gallery.order(:created_at).first(6)
     end
     def featured_posts
-      Post.order(:published_at).first(4)
+      Post.order(:published_at).reverse.first(4)
     end
 
     def site_categories 
