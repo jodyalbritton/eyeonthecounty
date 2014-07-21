@@ -23,7 +23,7 @@
 	 	
 	    	<div class="<%= sponsor.category.name %>">
 	    		<%= link_to sponsor_url(sponsor) do %>
-		  		<%= image_tag sponsor.avatar.url(:medium) %>
+		  		<%= image_tag sponsor.avatar.url(:medium), :class=> "img-responsive img-sponsor" %>
 		  		<div class="text-center">
 		  		 <h4><%= link_to sponsor.name, sponsor_url(sponsor) %></h4>
 		  		 </div>
