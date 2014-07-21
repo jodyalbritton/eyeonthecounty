@@ -7,7 +7,11 @@
 .portfolioFilter a.current { 
     font-weight:bold;
 }
-
+div.sponsor-details {
+    width: 260px;
+    text-align: center;
+    min-height: 60px;
+}
 div.portfolioContainer img {
     margin: 10px;
     height :260px;
@@ -40,7 +44,3 @@ div.portfolioContainer img {
     transition-property: transform, opacity;
 }
 
-.sponsor-img  {
-    
-   
-}
