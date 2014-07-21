@@ -21,7 +21,7 @@
 			<h3>Sponsor Details</h3>
 			<b>Phone:<br></b><%= @sponsor.phone %><br>
 			<b>Email:<br></b><%= mail_to @sponsor.email %><br>
-			<b>Website:<br></b><%= link_to @sponsor.url %><br>
+			<b>Website:<br></b><a href="<%=@sponsor.url %>"></a><br>
 			<b>Address:</b><br>
 			<%= @sponsor.address %><br>
 			<%= @sponsor.city %> , <%= @sponsor.state %>, <%= @sponsor.zip %><br>
