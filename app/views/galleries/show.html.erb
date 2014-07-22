@@ -27,8 +27,8 @@
       <% @gallery.photos.each do |photo| %>
       <div class="col-xs-3">
         <div class="thumb-contents thumbnail">
-            <%= link_to photo.file.url, data: {:gallery=>""} do %>
-            <%= image_tag photo.file.url(:medium) %>
+            <%= link_to photo.file.url(:original), data: {:gallery=>""} do %>
+            <%= image_tag photo.file.url(:original) %>
             <% end %>
             <div class="btn-toolbar">
               <div class="btn-group">
@@ -62,12 +62,12 @@
                     <div class="modal-body next"></div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left prev">
-                            <i class="glyphicon glyphicon-chevron-left"></i>
+                            <i class="fa fa-chevron-left"></i>
                             Previous
                         </button>
                         <button type="button" class="btn btn-primary next">
                             Next
-                            <i class="glyphicon glyphicon-chevron-right"></i>
+                            <i class="fa fa-chevron-right"></i>
                         </button>
                     </div>
                 </div>

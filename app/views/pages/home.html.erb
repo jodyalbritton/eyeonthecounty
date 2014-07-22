@@ -191,7 +191,7 @@
                                     </figure>
                                    
                                     <div class="text">
-                                        <h4 class="heading"><a href="blogdetail-double-sidebar.html"><%= featured_posts.first.title %></a></h4>
+                                        <h4 class="heading"><%= link_to featured_posts.first.title, post_url(featured_posts.first) %></h4>
                                         <p>
                                             <%= featured_posts.first.excerpt %>
                                         </p>
