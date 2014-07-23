@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="<%= sponsor_url(@sponsor) %>" />
 <meta property="og:image" content="<%= asset_url @sponsor.avatar.url(:medium) %>" />
-<meta property="og:description" content="<%= Sanitize.clean(@sponsor.description) %>" />
+<meta property="og:description" content="<%= strip_tags(@sponsor.description) %>" />
 
 <% end %>
 
