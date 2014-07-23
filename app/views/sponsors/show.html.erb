@@ -31,10 +31,11 @@
 	      <div class="playeriframe">
 	      	<%= raw (@sponsor.videos.first.get_details.embed_html5) %>
 	      </div>
-	      <div class="video-description lead">
-	        <%= sanitize(@sponsor.description) %>
-	      </div>
+	      
 	      <% end %>
+	     <div class="sponsor-description lead">
+	        <%= sanitize(@sponsor.description) %>
+	     </div>
 		</div>
 		<div class="col-md-4">
 			<div>
