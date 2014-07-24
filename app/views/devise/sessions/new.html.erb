@@ -1,19 +1,28 @@
-
-
-				<!-- PAGE TITLE -->
-				<header id="page-title">
-					<div class="container">
-						<h1>Sign In</h1>
-					</div>
-				</header>
-
-
-				<section class="container">
+		<div class="contents">
+				<div class="custom-container">
 
 					<div class="row">
 
 						<!-- LOGIN -->
 						<div class="col-md-6">
+
+							<%- if devise_mapping.omniauthable? %>
+								<div class="row">
+									<div class="col-md-6 text-center">
+										 <%= link_to omniauth_authorize_path(resource_name, :google_oauth2), :class=> "btn btn-danger"  do %>
+								    		<i class="fa fa-google"></i> Sign in with Google +
+								    	<% end %>
+									</div>
+									<div class="col-md-6 text-center">
+										<%= link_to omniauth_authorize_path(resource_name, :facebook), :class=> "btn btn-custom"  do %>
+								    		<i class="fa fa-facebook"></i> Sign in with facebook
+								    	<% end %>
+									</div>
+
+								</div>
+							   
+
+							<% end -%>
 
 							<h2>Sign <strong>In</strong></h2>
 							 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class=>"white-row") do |f| %>
@@ -37,6 +46,7 @@
 										</div>
 									</div>
 								</div>
+								<div class="form-group">
 								<div class="row">
 									<div class="col-md-6">
 										<span class="remember-box checkbox">
@@ -47,10 +57,14 @@
 											</label>
 										</span>
 									</div>
-									<div class="col-md-6">
-									<%= f.submit "Sign in", :class=>"btn btn-primary pull-right" %>
-									</div>
+									
+										<div class="col-md-6 text-right">
+										
+											<%= f.submit "Sign in", :class=>"btn btn-primary backcolor" %>
+										</div>
+								
 								</div>
+							</div>
 
 						<% end %>
 
@@ -92,9 +106,6 @@
 					<p class="white-row">
 						<%= render "devise/shared/links" %>
 
-				</section>
+				</div>
 
-		
-
-
-
+</div>
