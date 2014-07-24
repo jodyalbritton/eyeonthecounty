@@ -6,7 +6,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   layout :layout_by_resource
   before_action :configure_permitted_parameters, if: :devise_controller?
- 
+
+  before_filter :allow_iframe_requests
+
+    def allow_iframe_requests
+      response.headers.delete('X-Frame-Options')
+    end
+     
   def access_denied
     flash[:error] = t('the_role.access_denied')
     redirect_to(:back)
