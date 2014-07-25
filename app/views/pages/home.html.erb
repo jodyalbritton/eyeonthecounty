@@ -99,15 +99,17 @@
          <% arr_size = 0 %>
            <% featured_videos.each do |video| %>
            <% if video == featured_videos[0] %>
-            <li data-target="#myCarousel" data-slide-to="<%= arr_size %>" class="active-tab">
-           <% else %>
-           <li data-target="#myCarousel" data-slide-to="<%= arr_size %>">
+             <li data-target="#myCarousel" data-slide-to="<%= arr_size %>" class="active-tab">
+             <% else %>
+            <li data-target="#myCarousel" data-slide-to="<%= arr_size %>">
            <% end %>
             <a href="#">
-                <%= featured_videos[arr_size].title.first(20) %>
+                <div class="video-title">
+                    <%= featured_videos[arr_size].title.first(60) %>
                     <small>
                         <%= featured_videos[arr_size].published_at.strftime("%m/%d/%Y") %>
                     </small>
+                </div>
             </a>
            </li>
             <%arr_size = arr_size + 1 %>
@@ -150,14 +152,16 @@
                                         <!-- Video Info End -->
                                         <% end %>
                                     </figure>
-                                    <!-- Video Title Start -->
-                                    <%= link_to video_url(video) do %>
-                                    <h4><%= video.title %></h4>
-                                    <% end %>
-                                    <!-- Video Title End -->
+                                   
                                 </div>
                                 <!-- Video Box End -->
-                        
+                             <!-- Video Title Start -->
+                                    <%= link_to video_url(video) do %>
+                                    <div class="video-title">
+                                        <h4><%= video.title.first(65) %></h4>
+                                    </div>
+                                    <% end %>
+                                    <!-- Video Title End -->
                             </div>
                         <% end %>
                         </div>
