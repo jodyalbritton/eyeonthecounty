@@ -17,7 +17,7 @@ module ApplicationHelper
       Video.where(:sponsored => true).first(3)
     end 
     def most_viewed
-      Video.where(:sponsored => false).order(:views).first(4)
+      Video.where(:sponsored => false).order(:views).reverse.first(6)
     end
     def featured_galleries
       Gallery.order(:created_at).first(6)
