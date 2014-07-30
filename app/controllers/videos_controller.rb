@@ -8,5 +8,9 @@ class VideosController < ApplicationController
   def show
     @video = Video.friendly.find(params[:id])
     add_breadcrumb  @video.title, video_url(@video)
+    impressionist(@video)
+    @comments = @video.comment_threads.order(:cached_votes_up).reverse
+    @new_comment = Comment.build_from(@video, current_user, "")
+    @commentable = @video
   end
 end

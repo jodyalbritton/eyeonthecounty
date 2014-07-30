@@ -23,6 +23,10 @@ class PostsController < ApplicationController
      @categories = Category.all
     @posts_by_month = Post.all.group_by { |post| post.published_at.strftime("%B") }
     add_breadcrumb @post.title, :post_path
+    impressionist(@post)
+    @comments = @post.comment_threads.order(:cached_votes_up).reverse
+    @new_comment = Comment.build_from(@post, current_user, "")
+    @commentable = @post
   end
 
 
