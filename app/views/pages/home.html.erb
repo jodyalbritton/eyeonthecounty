@@ -24,7 +24,7 @@
                             <figcaption>
                                 <h2><%= link_to video.title, video_url(video) %></h2>
                                 <ul>
-                                    <li><i class="fa fa-heart"></i><%= video.likes %></li>
+                                    <li><i class="fa fa-heart"></i><%= video.fetch_likes %></li>
                                     <li><i class="fa fa-clock-o"></i><%= video.duration %></li>
                                 </ul>
                                 <div class="clearfix"></div>
@@ -144,7 +144,7 @@
                                          <%= link_to video_url(video) do %> 
                                         <div class="vidopts">
                                             <ul>
-                                                <li><i class="fa fa-heart"></i><%= video.likes %></li>
+                                                <li><i class="fa fa-heart"></i><%= video.fetch_likes %></li>
                                                 <li><i class="fa fa-clock-o"></i><%= video.duration %></li>
                                             </ul>
                                             <div class="clearfix"></div>
@@ -294,7 +294,7 @@
                                                  <%= link_to video_url(video) do %> 
                                                 <div class="vidopts">
                                                     <ul>
-                                                        <li><i class="fa fa-heart"></i><%= video.likes %></li>
+                                                        <li><i class="fa fa-heart"></i><%= video.fetch_likes %></li>
                                                         <li><i class="fa fa-clock-o"></i><%= video.duration %></li>
                                                     </ul>
                                                     <div class="clearfix"></div>
