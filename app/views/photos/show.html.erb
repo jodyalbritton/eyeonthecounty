@@ -1,0 +1,203 @@
+<% content_for :page_title,  @photo.name %>
+<% content_for :page_description, @photo.description  %>
+
+<% content_for :meta_tags do %>
+<!-- Twitter Card data --> 
+<meta name="twitter:card" value="<%= @photo.description %>">
+
+<!-- Open Graph data --> 
+
+<meta property="og:title" content="<%= @photo.name %>" /> 
+<meta property="og:site_name" content="Eye On The County">
+<meta property="og:type" content="photo">
+<meta property="og:url" content="<%= photo_url(@photo) %>" />
+<meta property="og:image" content="<%= @photo.file.url(:medium) %>" />
+<meta property="og:description" content="<%= @photo.description %>" />
+
+  
+<% end %>
+<div class="photoplayersec">
+        <div class="vidcontainer">
+            <div class="row"> 
+                <!-- Video Player Start -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 playershadow">
+                    <div class="playeriframe">
+                       <%= image_tag @photo.file.url(:large) %>
+                    </div>
+                </div>
+                <!-- Video Player End --> 
+                <!-- Video Stats and Sharing Start -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 photoinfo">
+                    <div class="row"> 
+                        <!-- Uploader Start -->
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 uploader">
+                            
+                            <div class="aboutuploader">
+                                
+                            </div>
+                        </div>
+                        <!-- Uploader End --> 
+                        <!-- Video Stats Start -->
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 stats">
+                            <hr class="visible-xs">
+                            <ul>
+                                <li class="likes">
+                                    <h5>Likes</h5>
+                                    <h2><%= @photo.fetch_likes %></h2>
+                                    
+                                </li>
+                                <li class="views">
+                                    <h5>Views</h5>
+                                    <h2><%= @photo.get_views %></h2>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Video Stats End --> 
+                               <!-- Video Share Start -->
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 photoshare">
+                            <ul>
+                                <li class="facebook" id="facebook" data-url="<%= photo_url(@photo) %>" data-text="<%= @photo.description %>">
+                                   
+                                   
+                                </li>
+                                <li class="twitter" id="twitter" data-url="<%= photo_url(@photo) %>" data-text="<%= @photo.title %>">
+                     
+                                   
+                                </li>
+                                <li class="gplus" id="googlePlus" data-url="<%= photo_url(@photo) %>" data-text="<%= @photo.description %>">
+                                
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="blogtext">
+                                    <h2 class="heading"><%= @photo.name %></h2>
+                                    <div class="clearfix"></div>
+                                    <div class="blogmetas">
+                                        <ul>
+                                            <li> 
+                                              <i class="fa fa-align-justify"></i> <%= link_to @photo.category.name, category_url(@photo.category) %>
+                                            </li>
+                                            <li> 
+                                              <i class="fa fa-tags"></i> 
+                                                <% @photo.tags.each do |tag| %>
+                                                  <%= link_to tag.name, tag_url(tag) %>
+                                                <% end %>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                      <%= sanitize(@photo.description) %>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <!-- Video Stats and Sharing End --> 
+                <!-- Like This Video Start -->
+              
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 likeit">
+                                     
+                      <hr />
+                        <% if user_signed_in? %>
+                           <h3> Cast Your Vote </h3>   
+                           <div id="votable-<%= @photo.id %>-vote">
+                              <%= render "votes/vote_result", :votable => @photo %>
+                              <%= render "votes/vote_controls", :votable => @photo %>
+                           </div>
+                        <% else %>
+                            <h3> Sign In To Vote </h3>
+                        <% end %>
+
+
+                    </div>
+                <!-- Like This Video Enb --> 
+            </div>
+        </div>
+    </div>
+        <div class="contents">
+        <div class="custom-container">
+     <!-- Contents Section Started -->
+                    <div class="sections">
+                        <h2 class="heading">Comments (<%= @photo.comment_threads.size %>)<h2>
+                        <div class="clearfix"></div>
+                        <div id="comments">
+                              <%= render :partial => "comments/comment", :collection => @comments, :as => :comment %>
+
+                        </div>
+                    </div>
+                    <!-- Contents Section End -->
+                    <div class="clearfix"></div>
+                    <!-- Contents Section Started -->
+                    <div class="sections">
+                        <h2 class="heading">Leave Reply</h2>
+                        <div class="clearfix"></div>
+                        <div id="leavereply">
+                          <% if user_signed_in? %>
+                           <%= render "comments/form" %>
+                          <% else %>
+                            <h3> You Must Sign In To Leave A Comment</h3>
+                          <% end %>
+                        </div>
+                    </div>
+                    <!-- Contents Section End -->
+                    <div class="clearfix"></div>
+                    </div>
+                    </div>
+                    
+<script>
+$('#twitter').sharrre({
+  share: {
+    twitter: true
+  },
+  enableHover: false,
+  enableTracking: true,
+  buttons: { twitter: {via: '_JulienH'}},
+  template: ' <i class="fa fa-twitter"></i><div class="sharingstats text-center"><h5>{total}</h5><p>Shares</p></div>',
+  click: function(api, options){
+    api.simulateClick();
+    api.openPopup('twitter');
+  }
+});
+$('#facebook').sharrre({
+  share: {
+    facebook: true
+  },
+  enableHover: false,
+  enableTracking: true,
+  template: ' <i class="fa fa-facebook"></i><div class="sharingstats text-center"><h5>{total}</h5><p>Shares</p></div>',
+  click: function(api, options){
+    api.simulateClick();
+    api.openPopup('facebook');
+  }
+});
+$('#googlePlus').sharrre({
+  share: {
+    googlePlus: true
+  },
+  enableHover: false,
+  enableTracking: true,
+  urlCurl: "",
+  template: ' <i class="fa fa-google-plus"></i><div class="sharingstats text-center"><h5>{total}</h5><p>Shares</p></div>',
+  click: function(api, options){
+    api.simulateClick();
+    api.openPopup('googlePlus');
+  }
+});
+</script>
+
+<style type="text/css">
+  
+  .sharrre .count {
+    color:#FFFFFF;
+    display:block;
+    font-size:18px;
+    font-weight:bold;
+    line-height:40px;
+    height:40px;
+    position:relative;
+    text-align:center;
+
+  }
+
+  
+</style>
