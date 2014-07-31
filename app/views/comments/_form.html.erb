@@ -1,0 +1,17 @@
+         <%= form_for (@new_comment), :form_html=> {:class=>"form-horizontal panel"} do |f| %>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Your Comment</label>
+                                            <%= f.text_area :body, :class=> "form-control", :rows=> 3, :placeholder=> "Write comment"%>
+                                                 <%= f.hidden_field :commentable_id, :value => @new_comment.commentable_id %>
+                                                <%= f.hidden_field :commentable_type,  :value => @new_comment.commentable_type %>
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                         <%= f.submit :comment, :class => "btn btn-primary backcolor pull-right", :disable_with => "Submitting…" %>
+                                       
+                                    </div>
+                                </div>
+                            <% end %>

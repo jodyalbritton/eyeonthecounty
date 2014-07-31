@@ -45,11 +45,12 @@
                             <ul>
                                 <li class="likes">
                                     <h5>Likes</h5>
-                                    <h2><%= @video.likes %></h2>
+                                    <h2><%= @video.fetch_likes %></h2>
+                                    
                                 </li>
                                 <li class="views">
                                     <h5>Views</h5>
-                                    <h2><%= @video.views %></h2>
+                                    <h2><%= @video.get_views %></h2>
                                 </li>
                             </ul>
                         </div>
@@ -95,11 +96,56 @@
                 </div>
                 <!-- Video Stats and Sharing End --> 
                 <!-- Like This Video Start -->
-                
+              
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 likeit">
+                                     
+                      <hr />
+                        <% if user_signed_in? %>
+                           <h3> Cast Your Vote </h3>   
+                           <div id="votable-<%= @video.id %>-vote">
+                              <%= render "votes/vote_result", :votable => @video %>
+                              <%= render "votes/vote_controls", :votable => @video %>
+                           </div>
+                        <% else %>
+                            <h3> Sign In To Vote </h3>
+                        <% end %>
+
+
+                    </div>
                 <!-- Like This Video Enb --> 
             </div>
         </div>
     </div>
+        <div class="contents">
+        <div class="custom-container">
+     <!-- Contents Section Started -->
+                    <div class="sections">
+                        <h2 class="heading">Comments (<%= @video.comment_threads.size %>)<h2>
+                        <div class="clearfix"></div>
+                        <div id="comments">
+                              <%= render :partial => "comments/comment", :collection => @comments, :as => :comment %>
+
+                        </div>
+                    </div>
+                    <!-- Contents Section End -->
+                    <div class="clearfix"></div>
+                    <!-- Contents Section Started -->
+                    <div class="sections">
+                        <h2 class="heading">Leave Reply</h2>
+                        <div class="clearfix"></div>
+                        <div id="leavereply">
+                          <% if user_signed_in? %>
+                           <%= render "comments/form" %>
+                          <% else %>
+                            <h3> You Must Sign In To Leave A Comment</h3>
+                          <% end %>
+                        </div>
+                    </div>
+                    <!-- Contents Section End -->
+                    <div class="clearfix"></div>
+                    </div>
+                    </div>
+                    
 <script>
 $('#twitter').sharrre({
   share: {

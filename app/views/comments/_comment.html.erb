@@ -1,0 +1,22 @@
+       <div class="media">
+                                <a href="#" class="pull-left">
+                                    <%= image_tag comment.user.avatar.url(:thumb), :class=> "media-object" %>
+                                  
+                                </a>
+                                <div class="media-body">
+                                    <div class="pull-right">
+                                         <div id="votable-<%= comment.id %>-vote">
+                                                <%= render "votes/vote_result", :votable => comment %>
+                                                <%= render "votes/vote_controls", :votable => comment%>
+                                           </div>
+                                    </div>
+                                    <h4 class="media-heading"><a href="#"><%= comment.user.username %></a></h4>
+                                    <time datetime="2014-05-12T17:02"><%= comment.created_at %></time>
+                                    <p>
+                                        <%= comment.body %>
+                                    </p>
+                                    <div class="clearfix"></div>
+                                   
+                                </div>
+                            </div>
+                          
