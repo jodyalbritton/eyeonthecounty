@@ -16,18 +16,18 @@
 
   
 <% end %>
-<div class="photoplayersec">
+<div class="videoplayersec">
         <div class="vidcontainer">
             <div class="row"> 
                 <!-- Video Player Start -->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 playershadow">
                     <div class="playeriframe">
-                       <%= image_tag @photo.file.url(:large) %>
+                       <%= image_tag @photo.file.url(:large), :class=>"img img-responsive" %>
                     </div>
                 </div>
                 <!-- Video Player End --> 
                 <!-- Video Stats and Sharing Start -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 photoinfo">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 videoinfo">
                     <div class="row"> 
                         <!-- Uploader Start -->
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 uploader">
@@ -54,13 +54,13 @@
                         </div>
                         <!-- Video Stats End --> 
                                <!-- Video Share Start -->
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 photoshare">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 videoshare">
                             <ul>
                                 <li class="facebook" id="facebook" data-url="<%= photo_url(@photo) %>" data-text="<%= @photo.description %>">
                                    
                                    
                                 </li>
-                                <li class="twitter" id="twitter" data-url="<%= photo_url(@photo) %>" data-text="<%= @photo.title %>">
+                                <li class="twitter" id="twitter" data-url="<%= photo_url(@photo) %>" data-text="<%= @photo.description %>">
                      
                                    
                                 </li>
@@ -76,7 +76,7 @@
                                     <div class="blogmetas">
                                         <ul>
                                             <li> 
-                                              <i class="fa fa-align-justify"></i> <%= link_to @photo.category.name, category_url(@photo.category) %>
+                                              <i class="fa fa-align-justify"></i> 
                                             </li>
                                             <li> 
                                               <i class="fa fa-tags"></i> 
