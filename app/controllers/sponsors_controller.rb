@@ -9,6 +9,7 @@ class SponsorsController < ApplicationController
   def show 
 
   	@sponsor = Sponsor.friendly.find(params[:id])
+  	impressionist(@sponsor)
   	add_breadcrumb @sponsor.name, sponsor_url(@sponsor)
   end
 end
